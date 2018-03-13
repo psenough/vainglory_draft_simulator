@@ -1,0 +1,22 @@
+{
+  "name": "vainglory_draft_simulator",
+  "version": "1.0.0",
+  "description": "`node scrape.js` to get heros info out of [vaingloryfire](https://www.vaingloryfire.com/) and save it in json files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psenough/vainglory_draft_simulator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psenough/vainglory_draft_simulator/issues"
+  },
+  "homepage": "https://github.com/psenough/vainglory_draft_simulator#readme",
+  "dependencies": {
+    "html-to-json": "^0.6.0"
+  }
+}
