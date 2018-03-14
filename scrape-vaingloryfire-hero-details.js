@@ -1,13 +1,12 @@
 
-// scrape https://www.vaingloryfire.com/vainglory/wiki/heroes for list of heroes and individual stats
-// scrape https://www.vaingloryfire.com/vainglory/wiki/heroes/adagio/abilities for description
-
 var settings = require("./settings.json");
+var list_heroes = require(settings['list_of_heroes_json']);
 
 var htmlToJson = require('html-to-json');
 var fs = require('fs');
 var util = require('util');
 
+/*
 var linkParser = htmlToJson.createParser(['.card-wrap', {
 	'parent': function ($doc, $) {
 		return $doc.parent().attr('class');
@@ -43,4 +42,4 @@ linkParser.request(settings['main_url'] + settings['path_heroes']).done(function
 	
 	// save to .json
 	fs.writeFileSync(settings['list_of_heroes_json'], JSON.stringify(list_of_heroes) , 'utf-8');
-});
+});*/

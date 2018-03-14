@@ -1,10 +1,13 @@
 {
   "name": "vainglory_draft_simulator",
-  "version": "1.0.0",
-  "description": "`node scrape.js` to get heros info out of [vaingloryfire](https://www.vaingloryfire.com/) and save it in json files",
+  "version": "0.0.1",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"scrape": "node scrape-vaingloryfire.js",
+	"scrape-hero-details": "node scrape-vaingloryfire-hero-details.js",
+	"scrape-hero-thumbs": "node scrape-vaingloryfire-hero-thumbnails.js"
   },
   "repository": {
     "type": "git",
