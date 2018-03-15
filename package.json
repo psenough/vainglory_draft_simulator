@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"scrape": "node scrape-vaingloryfire.js",
-	"scrape-hero-details": "node scrape-vaingloryfire-hero-details.js",
-	"scrape-hero-thumbs": "node scrape-vaingloryfire-hero-thumbnails.js"
+    "scrape": "node scrape-vaingloryfire.js",
+    "scrape-hero-details": "node scrape-vaingloryfire-hero-details.js",
+    "scrape-hero-thumbs": "node scrape-vaingloryfire-hero-thumbnails.js"
   },
   "repository": {
     "type": "git",

@@ -48,6 +48,7 @@ if (process.argv.length > 2) {
 	  }
 	});
 } else {
+	//TODO: transform this hammering into a waterfall scheme with breathing time for server to send responses
 	list_heroes.forEach(function (val, index, array) {
 		getThumb(val['hero']);
 	});
