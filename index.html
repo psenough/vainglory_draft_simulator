@@ -1,0 +1,170 @@
+<!doctype HTML>
+<html>
+	<head>
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  	<style>
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+@font-face {
+	font-family: 'Neuropol';
+	src: url('NEUROPOL.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	overflow: hidden;
+	padding: 0px;
+	margin: 0px;
+	background-color: black;
+	color: white;
+}
+
+.aligncenter {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	text-align: center;
+	margin: auto;
+}
+
+#header {
+	width: 100%;
+	height: 20%;
+	white-space: nowrap;
+}
+
+#left-bans {
+	background-color: blue;
+	width: 33%;
+	display: inline-block;
+}
+
+#timer-bg {
+	background-color: green;
+	left: 33%;
+	width: 33%;
+	display: inline-block;
+}
+
+#right-bans {
+	background-color: red;
+	left: 66%;
+	width: 33%;
+	display: inline-block;
+}
+
+#mid {
+	width: 100%;
+	height: 80%;
+	white-space: nowrap;
+}
+
+#left-side {
+	background-color: blue;
+	width: 33%;
+	display: inline-block;
+}
+
+#heroes {
+	background-color: green;
+	left: 33%;
+	width: 33%;
+	display: inline-block;
+}
+
+#right-side {
+	background-color: red;
+	left: 66%;
+	width: 33%;
+	display: inline-block;
+}
+
+#footer {
+	height: 10%;
+}
+ 	</style>
+	</head>
+	<body>
+		<div id="header">
+			<div id="left-bans">
+				<div id="left-bans-text">bans</div>
+				<div id="left-ban1"><img width="25px" src="" /></div>
+				<div id="left-ban2"><img width="25px" src="" /></div>
+			</div>
+			<div id="timer-bg">
+				<div id="timer">00</div>
+				<div id="selection-text">...</div>
+			</div>
+			<div id="right-bans">
+				<div id="right-bans-text">bans</div>
+				<div id="right-ban1"><img src="" /></div>
+				<div id="right-ban2"><img src="" /></div>
+			</div>
+		</div>
+		<div id="mid">
+			<div id="left-side">
+				<div id="player_1" class="left-player">
+					<div id="player_1_name">banana</div>
+					<div id="player_1_number" class="left-player-number">1</div>
+					<div id="player_1_pick" class="left-player-pick"></div>
+				</div>
+				<div id="player_4" class="left-player">
+					<div id="player_4_name">banana</div>
+					<div id="player_4_number" class="left-player-number">4</div>
+					<div id="player_4_pick" class="left-player-pick"></div>
+				</div>
+				<div id="player_5" class="left-player">
+					<div id="player_5_name">banana</div>
+					<div id="player_5_number" class="left-player-number">5</div>
+					<div id="player_5_pick" class="left-player-pick"></div>
+				</div>
+				<div id="player_8" class="left-player">
+					<div id="player_8_name">banana</div>
+					<div id="player_8_number" class="left-player-number">8</div>
+					<div id="player_8_pick" class="left-player-pick"></div>
+				</div>
+				<div id="player_9" class="left-player">
+					<div id="player_9_name">banana</div>
+					<div id="player_9_number" class="left-player-number">9</div>
+					<div id="player_9_pick" class="left-player-pick"></div>
+				</div>
+			</div>
+			<div id="heroes">
+			</div>
+			<div id="right-side">
+				<div id="player_2" class="right-player">
+					<div id="player_2_name">banana</div>
+					<div id="player_2_number" class="right-player-number">1</div>
+					<div id="player_2_pick" class="right-player-pick"></div>
+				</div>
+				<div id="player_3" class="right-player">
+					<div id="player_3_name">banana</div>
+					<div id="player_3_number" class="right-player-number">3</div>
+					<div id="player_3_pick" class="right-player-pick"></div>
+				</div>
+				<div id="player_6" class="right-player">
+					<div id="player_6_name">banana</div>
+					<div id="player_6_number" class="right-player-number">6</div>
+					<div id="player_6_pick" class="right-player-pick"></div>
+				</div>
+				<div id="player_7" class="right-player">
+					<div id="player_7_name">banana</div>
+					<div id="player_7_number" class="right-player-number">7</div>
+					<div id="player_7_pick" class="right-player-pick"></div>
+				</div>
+				<div id="player_8" class="right-player">
+					<div id="player_8_name">banana</div>
+					<div id="player_8_number" class="right-player-number">10</div>
+					<div id="player_8_pick" class="right-player-pick"></div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">info</div>
+		<script src="index.js"></script>
+	</body>
+</html>
