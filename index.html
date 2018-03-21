@@ -2,7 +2,11 @@
 <html>
 	<head>
 	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	  	<style>
+	  <style>
+	  
+# Font is called Brandon Grotesque
+# Also Northwood High
+
 * {
 	padding: 0px;
 	margin: 0px;
@@ -10,13 +14,14 @@
 }
 
 @font-face {
-	font-family: 'Neuropol';
-	src: url('NEUROPOL.ttf') format('truetype');
+	font-family: 'Brandon Grotesque';
+	src: url('Brandon Grotesque/Brandon_reg.otf') format('opentype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 body {
+    font-family: 'Brandon Grotesque';
 	overflow: hidden;
 	padding: 0px;
 	margin: 0px;
@@ -42,6 +47,25 @@ body {
 	background-color: blue;
 	width: 33%;
 	display: inline-block;
+	white-space: nowrap;
+}
+
+#left-ban1 {
+	display: inline-block;
+	width: 20%;
+}
+
+#left-ban1 img {
+	width: 100%;
+}
+
+#left-ban2 {
+	display: inline-block;
+	width: 20%;
+}
+
+#left-ban2 img {
+	width: 100%;
 }
 
 #timer-bg {
@@ -49,6 +73,15 @@ body {
 	left: 33%;
 	width: 33%;
 	display: inline-block;
+	vertical-align: top;
+}
+
+#timer {
+	text-align: center;
+}
+
+#selection-text {
+	text-align: center;
 }
 
 #right-bans {
@@ -56,6 +89,26 @@ body {
 	left: 66%;
 	width: 33%;
 	display: inline-block;
+	white-space: nowrap;
+	text-align: right;
+}
+
+#right-ban1 {
+	display: inline-block;
+	width: 20%;
+}
+
+#right-ban1 img {
+	width: 100%;
+}
+
+#right-ban2 {
+	display: inline-block;
+	width: 20%;
+}
+
+#right-ban2 img {
+	width: 100%;
 }
 
 #mid {
@@ -68,6 +121,7 @@ body {
 	background-color: blue;
 	width: 33%;
 	display: inline-block;
+	vertical-align: top;
 }
 
 #heroes {
@@ -75,6 +129,18 @@ body {
 	left: 33%;
 	width: 33%;
 	display: inline-block;
+	vertical-align: top;
+	flex-wrap: wrap;
+	white-space: normal;
+}
+#heroes div {
+	width: 24%;
+	display: inline-block;
+	padding: 0.5%;
+}
+
+#heroes div img {
+	width: 100%;
 }
 
 #right-side {
@@ -82,6 +148,7 @@ body {
 	left: 66%;
 	width: 33%;
 	display: inline-block;
+	vertical-align: top;
 }
 
 #footer {
@@ -92,18 +159,18 @@ body {
 	<body>
 		<div id="header">
 			<div id="left-bans">
-				<div id="left-bans-text">bans</div>
-				<div id="left-ban1"><img width="25px" src="" /></div>
-				<div id="left-ban2"><img width="25px" src="" /></div>
+				<div id="left-bans-text">BANS</div>
+				<div id="left-ban1"><img src="./images/black.png" /></div>
+				<div id="left-ban2"><img src="./images/black.png" /></div>
 			</div>
 			<div id="timer-bg">
 				<div id="timer">00</div>
 				<div id="selection-text">...</div>
 			</div>
 			<div id="right-bans">
-				<div id="right-bans-text">bans</div>
-				<div id="right-ban1"><img src="" /></div>
-				<div id="right-ban2"><img src="" /></div>
+				<div id="right-bans-text">BANS</div>
+				<div id="right-ban1"><img src="./images/black.png" /></div>
+				<div id="right-ban2"><img src="./images/black.png" /></div>
 			</div>
 		</div>
 		<div id="mid">
