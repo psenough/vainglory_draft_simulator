@@ -22,7 +22,7 @@
 
 body {
     font-family: 'Brandon Grotesque';
-	overflow: hidden;
+	overflow-x: hidden;
 	padding: 0px;
 	margin: 0px;
 	background-color: black;
@@ -70,10 +70,11 @@ body {
 
 #timer-bg {
 	background-color: green;
-	left: 33%;
+	left: 33.5%;
 	width: 33%;
 	display: inline-block;
 	vertical-align: top;
+	position: absolute;
 }
 
 #timer {
@@ -86,11 +87,12 @@ body {
 
 #right-bans {
 	background-color: red;
-	left: 66%;
+	right: 0%;
 	width: 33%;
 	display: inline-block;
 	white-space: nowrap;
 	text-align: right;
+	position: absolute;
 }
 
 #right-ban1 {
@@ -115,6 +117,8 @@ body {
 	width: 100%;
 	height: 80%;
 	white-space: nowrap;
+	position: absolute;
+	left: 0%;
 }
 
 #left-side {
@@ -122,21 +126,63 @@ body {
 	width: 33%;
 	display: inline-block;
 	vertical-align: top;
+	position: absolute;
+	left: 0px;
+	height: 100%;
 }
+
+.left-player {
+	position: relative;
+	width: 100%;
+	height: 10%;
+	margin: 1%;
+}
+
+.left-player-name {
+	display: inline-block;
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+#	width: 100%;
+#	height: 100%;
+}
+
+.left-player-number {
+	display: inline-block;
+	position: absolute;
+	right: 22%;
+	top: 45%;
+	z-index: 12;
+}
+
+.left-player-pick {
+	display: inline-block;
+	position: absolute;
+	top: 0p%;
+	right: 2%;
+	z-index: 10;
+	height: 100%
+}
+
+.left-player-pick img {
+	height: 100%;
+} 
 
 #heroes {
 	background-color: green;
-	left: 33%;
+	left: 33.5%;
 	width: 33%;
 	display: inline-block;
 	vertical-align: top;
 	flex-wrap: wrap;
 	white-space: normal;
+	position: absolute;
 }
 #heroes div {
 	width: 24%;
 	display: inline-block;
-	padding: 0.5%;
+	padding-left: 0.5%;
+	padding-right: 0.5%;
 }
 
 #heroes div img {
@@ -145,10 +191,49 @@ body {
 
 #right-side {
 	background-color: red;
-	left: 66%;
+	right: 0%;
 	width: 33%;
+	height: 100%;
 	display: inline-block;
 	vertical-align: top;
+	position: absolute;
+}
+
+.right-player {
+	position: relative;
+	width: 100%;
+	height: 10%;
+	margin: 1%;
+}
+
+.right-player-name {
+	display: inline-block;
+	position: absolute;
+	right: 1%;
+	bottom: 0px;
+#	width: 100%;
+#	height: 100%;
+}
+
+.right-player-number {
+	display: inline-block;
+	position: absolute;
+	left: 20%;
+	top: 45%;
+	z-index: 12;
+}
+
+.right-player-pick {
+	display: inline-block;
+	position: absolute;
+	top: 0p%;
+	left: 0%;
+	z-index: 10;
+	height: 100%
+}
+
+.right-player-pick img {
+	height: 100%;
 }
 
 #footer {
@@ -176,58 +261,58 @@ body {
 		<div id="mid">
 			<div id="left-side">
 				<div id="player_1" class="left-player">
-					<div id="player_1_name">banana</div>
+					<div id="player_1_name" class="left-player-name">banana</div>
 					<div id="player_1_number" class="left-player-number">1</div>
-					<div id="player_1_pick" class="left-player-pick"></div>
+					<div id="player_1_pick" class="left-player-pick"><img src="./images/black.png" /></div>
 				</div>
 				<div id="player_4" class="left-player">
-					<div id="player_4_name">banana</div>
+					<div id="player_4_name" class="left-player-name">banana</div>
 					<div id="player_4_number" class="left-player-number">4</div>
-					<div id="player_4_pick" class="left-player-pick"></div>
+					<div id="player_4_pick" class="left-player-pick"><img src="./images/black.png" /></div>
 				</div>
 				<div id="player_5" class="left-player">
-					<div id="player_5_name">banana</div>
+					<div id="player_5_name" class="left-player-name">banana</div>
 					<div id="player_5_number" class="left-player-number">5</div>
-					<div id="player_5_pick" class="left-player-pick"></div>
+					<div id="player_5_pick" class="left-player-pick"><img src="./images/black.png" /></div>
 				</div>
 				<div id="player_8" class="left-player">
-					<div id="player_8_name">banana</div>
+					<div id="player_8_name" class="left-player-name">banana</div>
 					<div id="player_8_number" class="left-player-number">8</div>
-					<div id="player_8_pick" class="left-player-pick"></div>
+					<div id="player_8_pick" class="left-player-pick"><img src="./images/black.png" /></div>
 				</div>
 				<div id="player_9" class="left-player">
-					<div id="player_9_name">banana</div>
+					<div id="player_9_name" class="left-player-name">banana</div>
 					<div id="player_9_number" class="left-player-number">9</div>
-					<div id="player_9_pick" class="left-player-pick"></div>
+					<div id="player_9_pick" class="left-player-pick"><img src="./images/black.png" /></div>
 				</div>
 			</div>
 			<div id="heroes">
 			</div>
 			<div id="right-side">
 				<div id="player_2" class="right-player">
-					<div id="player_2_name">banana</div>
-					<div id="player_2_number" class="right-player-number">1</div>
-					<div id="player_2_pick" class="right-player-pick"></div>
+					<div id="player_2_name" class="right-player-name">banana</div>
+					<div id="player_2_number" class="right-player-number">2</div>
+					<div id="player_2_pick" class="right-player-pick"><img src="./images/black.png" /></div>
 				</div>
 				<div id="player_3" class="right-player">
-					<div id="player_3_name">banana</div>
+					<div id="player_3_name" class="right-player-name">banana</div>
 					<div id="player_3_number" class="right-player-number">3</div>
-					<div id="player_3_pick" class="right-player-pick"></div>
+					<div id="player_3_pick" class="right-player-pick"><img src="./images/black.png" /></div>
 				</div>
 				<div id="player_6" class="right-player">
-					<div id="player_6_name">banana</div>
+					<div id="player_6_name" class="right-player-name">banana</div>
 					<div id="player_6_number" class="right-player-number">6</div>
-					<div id="player_6_pick" class="right-player-pick"></div>
+					<div id="player_6_pick" class="right-player-pick"><img src="./images/black.png" /></div>
 				</div>
 				<div id="player_7" class="right-player">
-					<div id="player_7_name">banana</div>
+					<div id="player_7_name" class="right-player-name">banana</div>
 					<div id="player_7_number" class="right-player-number">7</div>
-					<div id="player_7_pick" class="right-player-pick"></div>
+					<div id="player_7_pick" class="right-player-pick"><img src="./images/black.png" /></div>
 				</div>
 				<div id="player_8" class="right-player">
-					<div id="player_8_name">banana</div>
+					<div id="player_8_name" class="right-player-name">banana</div>
 					<div id="player_8_number" class="right-player-number">10</div>
-					<div id="player_8_pick" class="right-player-pick"></div>
+					<div id="player_8_pick" class="right-player-pick"><img src="./images/black.png" /></div>
 				</div>
 			</div>
 		</div>
