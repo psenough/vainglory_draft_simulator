@@ -183,10 +183,16 @@ body {
 	display: inline-block;
 	padding-left: 0.5%;
 	padding-right: 0.5%;
+	white-space: nowrap;
 }
 
 #heroes div img {
 	width: 100%;
+}
+
+.hero_img_overlay {
+	position: relative;
+	left: -100%;
 }
 
 #right-side {
@@ -245,8 +251,8 @@ body {
 		<div id="header">
 			<div id="left-bans">
 				<div id="left-bans-text">BANS</div>
-				<div id="left-ban1"><img src="./images/black.png" /></div>
-				<div id="left-ban2"><img src="./images/black.png" /></div>
+				<div id="left-ban1"><img id="left-ban1-img" src="./images/black.png" /></div>
+				<div id="left-ban2"><img id="left-ban2-img" src="./images/black.png" /></div>
 			</div>
 			<div id="timer-bg">
 				<div id="timer">00</div>
@@ -254,8 +260,8 @@ body {
 			</div>
 			<div id="right-bans">
 				<div id="right-bans-text">BANS</div>
-				<div id="right-ban1"><img src="./images/black.png" /></div>
-				<div id="right-ban2"><img src="./images/black.png" /></div>
+				<div id="right-ban1"><img id="right-ban1-img" src="./images/black.png" /></div>
+				<div id="right-ban2"><img id="right-ban2-img" src="./images/black.png" /></div>
 			</div>
 		</div>
 		<div id="mid">
