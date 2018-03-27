@@ -21,6 +21,7 @@ var state = 0;
 
 function stepState() {
 	state++;
+	//console.log('this state: ' + state);
 	switch(state) {
 		case 1: 
 			document.getElementById('selection-text').innerHTML = 'player 1 selecting 1st ban';
@@ -34,7 +35,7 @@ function stepState() {
 					console.log(heroes_list[found]);
 					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						dom.src = 'images/ban_small.png';
+						dom.src = 'images/ban_small_blue.png';
 					}
 					document.getElementById('left-ban1-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
@@ -50,7 +51,7 @@ function stepState() {
 					console.log(heroes_list[found]);
 					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						dom.src = 'images/ban_small.png';
+						dom.src = 'images/ban_small_red.png';
 					}
 					document.getElementById('right-ban2-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
@@ -66,7 +67,7 @@ function stepState() {
 					console.log(heroes_list[found]);
 					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						dom.src = 'images/ban_small.png';
+						dom.src = 'images/ban_small_red.png';
 					}
 					document.getElementById('right-ban1-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
@@ -82,7 +83,7 @@ function stepState() {
 					console.log(heroes_list[found]);
 					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						dom.src = 'images/ban_small.png';
+						dom.src = 'images/ban_small_blue.png';
 					}
 					document.getElementById('left-ban2-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
@@ -96,10 +97,11 @@ function stepState() {
 				});
 				if (found != -1) {
 					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase());
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						//todo: put unavailable icon overlay
+						dom.src = 'images/grey.png';
 					}
+					document.getElementById('player_1_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
 				document.getElementById('selection-text').innerHTML = 'player 2 selecting hero';
 			}
@@ -111,10 +113,11 @@ function stepState() {
 				});
 				if (found != -1) {
 					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase());
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						//todo: put unavailable icon overlay
+						dom.src = 'images/grey.png';
 					}
+					document.getElementById('player_2_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
 				document.getElementById('selection-text').innerHTML = 'player 3 selecting hero';
 			}
@@ -126,10 +129,11 @@ function stepState() {
 				});
 				if (found != -1) {
 					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase());
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						//todo: put unavailable icon overlay
+						dom.src = 'images/grey.png';
 					}
+					document.getElementById('player_3_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
 				document.getElementById('selection-text').innerHTML = 'player 4 selecting hero';
 			}
@@ -141,10 +145,11 @@ function stepState() {
 				});
 				if (found != -1) {
 					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase());
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						//todo: put unavailable icon overlay
+						dom.src = 'images/grey.png';
 					}
+					document.getElementById('player_4_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
 				document.getElementById('selection-text').innerHTML = 'player 5 selecting hero';
 			}
@@ -156,10 +161,11 @@ function stepState() {
 				});
 				if (found != -1) {
 					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase());
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						//todo: put unavailable icon overlay
+						dom.src = 'images/grey.png';
 					}
+					document.getElementById('player_5_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
 				document.getElementById('selection-text').innerHTML = 'player 6 selecting hero';
 			}
@@ -171,10 +177,11 @@ function stepState() {
 				});
 				if (found != -1) {
 					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase());
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						//todo: put unavailable icon overlay
+						dom.src = 'images/grey.png';
 					}
+					document.getElementById('player_6_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
 				document.getElementById('selection-text').innerHTML = 'player 7 selecting hero';
 			}
@@ -186,10 +193,11 @@ function stepState() {
 				});
 				if (found != -1) {
 					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase());
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						//todo: put unavailable icon overlay
+						dom.src = 'images/grey.png';
 					}
+					document.getElementById('player_7_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
 				document.getElementById('selection-text').innerHTML = 'player 8 selecting hero';
 			}
@@ -201,10 +209,11 @@ function stepState() {
 				});
 				if (found != -1) {
 					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase());
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						//todo: put unavailable icon overlay
+						dom.src = 'images/grey.png';
 					}
+					document.getElementById('player_8_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
 				document.getElementById('selection-text').innerHTML = 'player 9 selecting hero';
 			}
@@ -216,12 +225,29 @@ function stepState() {
 				});
 				if (found != -1) {
 					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase());
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
 					if (dom) {
-						//todo: put unavailable icon overlay
+						dom.src = 'images/grey.png';
 					}
+					document.getElementById('player_9_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
 				}
 				document.getElementById('selection-text').innerHTML = 'player 10 selecting hero';
+			}
+		break;
+		case 15: 
+			{
+				var found = heroes_list.findIndex(function(element) {
+					return element['action'] == (state-1);
+				});
+				if (found != -1) {
+					console.log(heroes_list[found]);
+					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+					if (dom) {
+						dom.src = 'images/grey.png';
+					}
+					document.getElementById('player_10_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+				}
+				document.getElementById('selection-text').innerHTML = 'Swap heroes ...';
 			}
 		break;
 	}
@@ -270,7 +296,7 @@ function loadHeroes() {
 					var found = heroes_list.findIndex(function(element) {
 						return element['hero'].toLowerCase() == hero_name;
 					});
-					console.log(found);
+					//console.log(found);
 					if (found != -1) {
 						if (heroes_list[found]['action'] == undefined) {
 							heroes_list[found]['action'] = state;
