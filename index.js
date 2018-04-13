@@ -22,233 +22,505 @@ var state = 0;
 function stepState() {
 	state++;
 	//console.log('this state: ' + state);
-	switch(state) {
-		case 1: 
-			document.getElementById('selection-text').innerHTML = 'player 1 selecting 1st ban';
-		break;
-		case 2:
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/ban_small_blue.png';
+	switch(mode) {
+		case 'ranked': 
+		{
+			switch(state) {
+				case 1: 
+					document.getElementById('selection-text').innerHTML = 'player 1 selecting 1st ban';
+				break;
+				case 2:
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_blue.png';
+							}
+							document.getElementById('left-ban1-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 2 selecting 2nd ban';
 					}
-					document.getElementById('left-ban1-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 2 selecting 2nd ban';
-			}
-		break;
-		case 3: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/ban_small_red.png';
+				break;
+				case 3: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_red.png';
+							}
+							document.getElementById('right-ban2-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 2 selecting 3rd ban';
 					}
-					document.getElementById('right-ban2-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 2 selecting 3rd ban';
-			}
-		break;
-		case 4: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/ban_small_red.png';
+				break;
+				case 4: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_red.png';
+							}
+							document.getElementById('right-ban1-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 1 selecting 4th ban';
 					}
-					document.getElementById('right-ban1-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 1 selecting 4th ban';
-			}
-		break;
-		case 5: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/ban_small_blue.png';
+				break;
+				case 5: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_blue.png';
+							}
+							document.getElementById('left-ban2-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 1 selecting hero';
 					}
-					document.getElementById('left-ban2-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 1 selecting hero';
-			}
-		break;
-		case 6: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 6: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_1_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 2 selecting hero';
 					}
-					document.getElementById('player_1_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 2 selecting hero';
-			}
-		break;
-		case 7: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 7: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_2_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 3 selecting hero';
 					}
-					document.getElementById('player_2_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 3 selecting hero';
-			}
-		break;
-		case 8: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 8: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_3_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 4 selecting hero';
 					}
-					document.getElementById('player_3_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 4 selecting hero';
-			}
-		break;
-		case 9: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 9: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_4_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 5 selecting hero';
 					}
-					document.getElementById('player_4_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 5 selecting hero';
-			}
-		break;
-		case 10: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 10: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_5_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 6 selecting hero';
 					}
-					document.getElementById('player_5_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 6 selecting hero';
-			}
-		break;
-		case 11: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 11: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_6_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 7 selecting hero';
 					}
-					document.getElementById('player_6_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 7 selecting hero';
-			}
-		break;
-		case 12: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 12: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_7_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 8 selecting hero';
 					}
-					document.getElementById('player_7_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 8 selecting hero';
-			}
-		break;
-		case 13: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 13: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_8_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 9 selecting hero';
 					}
-					document.getElementById('player_8_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 9 selecting hero';
-			}
-		break;
-		case 14: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 14: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_9_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'player 10 selecting hero';
 					}
-					document.getElementById('player_9_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'player 10 selecting hero';
-			}
-		break;
-		case 15: 
-			{
-				var found = heroes_list.findIndex(function(element) {
-					return element['action'] == (state-1);
-				});
-				if (found != -1) {
-					console.log(heroes_list[found]);
-					var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
-					if (dom) {
-						dom.src = 'images/grey.png';
+				break;
+				case 15: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_10_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'Swap heroes ...';
 					}
-					document.getElementById('player_10_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
-				}
-				document.getElementById('selection-text').innerHTML = 'Swap heroes ...';
+				break;
 			}
+		}
+		break;
+		case 'competitive': 
+		{
+			switch(state) {
+				case 1: 
+					document.getElementById('selection-text').innerHTML = 'blue team banning';
+				break;
+				case 2:
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_blue.png';
+							}
+							document.getElementById('left-ban1-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'red team banning';
+					}
+				break;
+				case 3: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_red.png';
+							}
+							document.getElementById('right-ban3-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'blue team selecting hero';
+					}
+				break;
+				case 4: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_1_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'red team selecting hero';
+					}
+				break;
+				case 5: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_2_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'red team selecting hero';
+					}
+				break;
+				case 6: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_3_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'blue team selecting hero';
+					}
+				break;
+				case 7: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_4_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						//document.getElementById('selection-text').innerHTML = 'player 5 selecting hero';
+						document.getElementById('selection-text').innerHTML = 'red team banning';
+					}
+				break;
+				case 8: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_red.png';
+							}
+							document.getElementById('right-ban2-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'blue team banning';
+					}
+				break;
+				case 9: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_blue.png';
+							}
+							document.getElementById('left-ban2-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'red team selecting hero';
+					}
+				break;
+				case 10: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_6_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'blue team selecting hero';
+					}
+				break;
+				case 11: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_5_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'blue team selecting hero';
+					}
+				break;
+				case 12: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_8_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'red team selecting hero';
+					}
+				break;
+				case 13: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_7_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'blue team banning';
+					}
+				break;
+				case 14: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_blue.png';
+							}
+							document.getElementById('left-ban3-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'red team banning';
+					}
+				break;
+				case 15: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/ban_small_blue.png';
+							}
+							document.getElementById('right-ban1-img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'blue team selecting hero';
+					}
+				break;
+				case 16: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_9_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'red team selecting hero';
+					}
+				break;
+				case 17: 
+					{
+						var found = heroes_list.findIndex(function(element) {
+							return element['action'] == (state-1);
+						});
+						if (found != -1) {
+							console.log(heroes_list[found]);
+							var dom = document.getElementById(heroes_list[found]['hero'].toLowerCase()+'_img_overlay');
+							if (dom) {
+								dom.src = 'images/grey.png';
+							}
+							document.getElementById('player_10_pick_img').src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+						}
+						document.getElementById('selection-text').innerHTML = 'swap heroes phase ...';
+					}
+				break;
+			}
+		}
 		break;
 	}
 }
@@ -328,12 +600,47 @@ function loadHeroes() {
 }
 
 var settings;
+var mode = 'ranked'; // default mode when there is no query argument on url
 
 window.onload = function() {
+	// get mode
+	mode = getParameterByName('mode')?getParameterByName('mode'):mode;
+	
+	if (mode == 'ranked') {
+		// hide unused ban slots
+		document.getElementById('left-ban3').style.display = 'none';
+		document.getElementById('right-ban3').style.display = 'none';
+	} else {
+		// hide player number order that only makes sense in ranked and not competitive
+		for (var i=1; i<=10; i++) {
+			document.getElementById('player_'+i+'_number').style.display = 'none';
+		}
+	}
+	
+	// load settings
 	loadJSON("settings.json",
 		function(data){ 
 			settings = data;
+			// we have our settings now, lets load the heroes
 			loadHeroes();
 		},
 		function(err){ console.log(err); });
+}
+
+function ranked_5v5_button() {
+	window.location.href = '/index.html?mode=ranked';
+}
+
+function competitive_5v5_button() {
+	window.location.href = '/index.html?mode=competitive';
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }

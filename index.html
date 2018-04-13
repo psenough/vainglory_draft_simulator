@@ -20,6 +20,13 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'Northwood High';
+	src: url('Northwood High/Northwood High.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
     font-family: 'Brandon Grotesque';
 	overflow-x: hidden;
@@ -27,6 +34,8 @@ body {
 	margin: 0px;
 	background-color: black;
 	color: white;
+	--left-side-color: rgba(0,0,250,0.5);
+	--right-side-color: rgba(250,0,0,0.5);
 }
 
 .aligncenter {
@@ -44,7 +53,7 @@ body {
 }
 
 #left-bans {
-	background-color: blue;
+	background-color: var(--left-side-color);
 	width: 33%;
 	display: inline-block;
 	white-space: nowrap;
@@ -69,13 +78,23 @@ body {
 	width: 100%;
 }
 
+#left-ban3 {
+	display: inline-block;
+	width: 20%;
+}
+
+#left-ban3 img {
+	width: 100%;
+}
+
+
 .ban-img-overlay {
 	position: relative;
 	left: -100%;
 }
 
 #timer-bg {
-	background-color: green;
+#	background-color: green;
 	left: 33.5%;
 	width: 33%;
 	display: inline-block;
@@ -92,7 +111,7 @@ body {
 }
 
 #right-bans {
-	background-color: red;
+	background-color: var(--right-side-color);
 	right: 0%;
 	width: 33%;
 	display: inline-block;
@@ -120,6 +139,15 @@ body {
 	width: 100%;
 }
 
+#right-ban3 {
+	display: inline-block;
+	width: 20%;
+}
+
+#right-ban3 img {
+	width: 100%;
+}
+
 #mid {
 	width: 100%;
 	height: 80%;
@@ -129,13 +157,13 @@ body {
 }
 
 #left-side {
-	background-color: blue;
-	width: 33%;
+	background-color: var(--left-side-color);
+	width: 20%;
 	display: inline-block;
 	vertical-align: top;
 	position: absolute;
 	left: 0px;
-	height: 100%;
+	height: 90%;
 }
 
 .left-player {
@@ -176,9 +204,9 @@ body {
 } 
 
 #heroes {
-	background-color: green;
-	left: 33.5%;
-	width: 33%;
+#	background-color: green;
+	left: 20.5%;
+	width: 59%;
 	display: inline-block;
 	vertical-align: top;
 	flex-wrap: wrap;
@@ -186,8 +214,9 @@ body {
 	position: absolute;
 }
 #heroes div {
-	width: 24%;
+	width: 10%;
 	display: inline-block;
+	padding-top: 0.5%;
 	padding-left: 0.5%;
 	padding-right: 0.5%;
 	white-space: nowrap;
@@ -203,10 +232,10 @@ body {
 }
 
 #right-side {
-	background-color: red;
+	background-color: var(--right-side-color);
 	right: 0%;
-	width: 33%;
-	height: 100%;
+	width: 20%;
+	height: 90%;
 	display: inline-block;
 	vertical-align: top;
 	position: absolute;
@@ -251,7 +280,26 @@ body {
 
 #footer {
 	height: 10%;
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+	width: 100%
 }
+
+#ranked_5v5_button {
+	cursor: pointer;
+	font-family: 'Northwood High';
+	font-size: 2em;
+	background: linear-gradient(rgba(0,0,0,1), rgba(50,50,50,1));
+}
+
+#competitive_5v5_button {
+	cursor: pointer;
+	font-family: 'Northwood High';
+	font-size: 2em;
+	background: linear-gradient(rgba(0,0,0,1), rgba(50,50,50,1));
+}
+
  	</style>
 	</head>
 	<body>
@@ -260,7 +308,8 @@ body {
 				<div id="left-bans-text">BANS</div>
 				<div id="left-ban1"><img id="left-ban1-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
 				<div id="left-ban2"><img id="left-ban2-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
-			</div>
+				<div id="left-ban3"><img id="left-ban3-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
+				</div>
 			<div id="timer-bg">
 				<div id="timer">00</div>
 				<div id="selection-text">...</div>
@@ -269,6 +318,7 @@ body {
 				<div id="right-bans-text">BANS</div>
 				<div id="right-ban1"><img id="right-ban1-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
 				<div id="right-ban2"><img id="right-ban2-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
+				<div id="right-ban3"><img id="right-ban3-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
 			</div>
 		</div>
 		<div id="mid">
@@ -329,7 +379,11 @@ body {
 				</div>
 			</div>
 		</div>
-		<div id="footer">info</div>
+		<div id="footer">
+			<span id="ranked_5v5_button" onclick="javascript:ranked_5v5_button()">Ranked 5v5</span>
+			&nbsp;&nbsp;
+			<span id="competitive_5v5_button" onclick="javascript:competitive_5v5_button()">Competitive 5v5</span>
+		</div>
 		<script src="index.js"></script>
 	</body>
 </html>
