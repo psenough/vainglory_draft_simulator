@@ -14,7 +14,7 @@ use `http-server` to start the localhost server and load the page at http://loca
 
 ## TODO
 
-* figure out a way to use API to get json with winrates of heroes maybe using `https://github.com/zeroclutch/vainglory-counter-data` ?
+* figure out a way to use API to get json with winrates of heroes maybe using `https://github.com/zeroclutch/vainglory-counter-data` ? or vgpro
 
 * display total winrate of heroes on screen
 
@@ -37,3 +37,7 @@ use `http-server` to start the localhost server and load the page at http://loca
 * display position and WP/CP on sides (click to alter)
 
 * split team views with central server to allow real drafting
+
+## Credits
+
+Coded by ps with some help by physiX.
