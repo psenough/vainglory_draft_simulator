@@ -628,11 +628,11 @@ window.onload = function() {
 }
 
 function ranked_5v5_button() {
-	window.location.href = '/index.html?mode=ranked';
+	window.location.href = window.location.href = window.location.pathname + '?mode=ranked';
 }
 
 function competitive_5v5_button() {
-	window.location.href = '/index.html?mode=competitive';
+	window.location.href = window.location.href = window.location.pathname + '?mode=competitive';
 }
 
 function getParameterByName(name, url) {
