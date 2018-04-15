@@ -18,7 +18,7 @@ you can use arguments to specify heroes (i.e. `node scrape-hero-details.js ardan
 
 you can use arguments to specify heroes (i.e. `node scrape-vgpro-hero-synergies.js Ardan Celeste Vox` only gets details for the ardan family)
 
-beware that vgpro-hero-startegies is capitalization sensitive.
+beware that vgpro-hero-synergies is capitalization sensitive about the hero names.
 
 to see the draft page use `http-server` to start the localhost server and load the page at http://localhost:8080/
 
