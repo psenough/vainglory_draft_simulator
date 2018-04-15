@@ -1,16 +1,28 @@
 # vainglory_draft_simulator
 
-`node scrape-vaingloryfire.js` to get heros info out of [vaingloryfire](https://www.vaingloryfire.com/) and save it in json file
+this uses nodejs, so make sure you install it first.
 
-`node scrape-vaingloryfire-hero-thumbnails.js` to get thumbnails froms all heroes info out of [vaingloryfire](https://www.vaingloryfire.com/) and save it in a specified directory
+then you can launch a command line and call:
 
-you can use arguments to specify heroes, `node scrape-vaingloryfire-hero-thumbnails.js ardan celeste vox` only gets thumbnails of the ardan family for example
+`node scrape-vaingloryfire-heroes-list.js` to get heros info out of [vaingloryfire](https://www.vaingloryfire.com/), saves it to a json file
 
-`node scrape-vaingloryfire-hero-details.js` to get thumbnails froms all heroes info out of [vainglorygame](https://www.vainglorygame.com/) and save it in a specified directory
+`node scrape-hero-thumbnails.js` to get thumbnails froms all heroes info out of [vaingloryfire](https://www.vaingloryfire.com/) and save it in a specified directory
 
-you can use arguments to specify heroes, `node scrape-vaingloryfire-hero-details.js ardan celeste vox` only gets details for the ardan family for example
+you can use arguments to specify which heroes (i.e. `node scrape-hero-thumbnails.js ardan celeste vox` only gets thumbnails of the ardan family)
 
-use `http-server` to start the localhost server and load the page at http://localhost:8080/
+`node scrape-hero-details.js` to get thumbnails froms all heroes info out of [vainglorygame](https://www.vainglorygame.com/) and save it in a specified directory
+
+you can use arguments to specify heroes (i.e. `node scrape-hero-details.js ardan celeste vox` only gets details for the ardan family)
+
+`node scrape-vgpro-hero-synergies.js` to get meta hero synergy info from [vgpro](https://vgpro.gg/) and save it in a specified directory
+
+you can use arguments to specify heroes (i.e. `node scrape-vgpro-hero-synergies.js Ardan Celeste Vox` only gets details for the ardan family)
+
+beware that vgpro-hero-startegies is capitalization sensitive.
+
+to see the draft page use `http-server` to start the localhost server and load the page at http://localhost:8080/
+
+if you don't have http-sever you can install by calling `npm install http-server -g`
 
 ## TODO
 
@@ -40,4 +52,4 @@ use `http-server` to start the localhost server and load the page at http://loca
 
 ## Credits
 
-Coded by ps with some help by physiX.
+Coded by ps with some help by physiX and 4ever.
