@@ -215,6 +215,22 @@ function loadHeroes() {
 				this_hero_img_overlay.setAttribute('class', 'hero_img_overlay' );
 				this_hero.appendChild(this_hero_img_overlay);
 				heroes.appendChild(this_hero);
+				var this_hero_text_overlay = document.createElement('div');
+				this_hero_text_overlay.setAttribute('id', list[key]['hero'].toLowerCase() + '_text_overlay' );
+				this_hero_text_overlay.setAttribute('class', 'hero_text_overlay' );
+				//this_hero_text_overlay.innerHTML = 'WR: 23%<br>BR: 30%';
+				this_hero.appendChild(this_hero_text_overlay);
+				heroes.appendChild(this_hero);
+				
+				let temp_hero = list[key]['hero'].toLowerCase();
+				loadJSON( settings['local_images_path'] + temp_hero + '-synergies.json',
+					function(data){ 
+						var dom = document.getElementById(temp_hero + '_text_overlay');
+						dom.innerHTML = 'WR: ' + data.winRate + '%<br>BR: ' + data.banRate + '%';
+					},
+					function(err){ console.log(err); }
+				);
+			
 			}
 			
 			stepState();
