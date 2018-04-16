@@ -19,7 +19,6 @@ function loadJSON(path, success, error)
 
 var state = 0;
 
-
 function stages(hero_overlay, img_dom, next_text) {
 	var found = heroes_list.findIndex(function(element) {
 		return element['action'] == (state-1);
