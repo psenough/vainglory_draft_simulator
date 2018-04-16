@@ -46,7 +46,7 @@ if you don't have http-sever you can install by calling `npm install http-server
 
 * clock countdown as seen on draft
 
-* display position and WP/CP on sides (click to alter)
+* display position and WP/CP on sides (click to alter, helps you see things more clearly)
 
 * split team views with central server to allow real drafting
 
