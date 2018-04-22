@@ -112,6 +112,8 @@ function showCounters(pick_order) {
 			dom.innerHTML = 'WR: ' + wr + '%<br>PR: ' + pr + '%';
 		}
 	}
+	
+	//TODO: add emoji to highest winrate
 };
 
 
@@ -139,6 +141,8 @@ function showSynergies(pick_order) {
 			dom.innerHTML = 'WR: ' + wr + '%<br>PR: ' + pr + '%';
 		}
 	}
+	
+	//TODO: add emoji to highest winrate
 };
 
 function stepState() {
