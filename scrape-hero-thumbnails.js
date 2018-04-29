@@ -8,37 +8,7 @@ var util = require('util');
 var request = require('request');
 var url = require("url");
 var path = require("path");
-
-var download = function(url, dest, cb) {
-    var file = fs.createWriteStream(dest);
-    var sendReq = request.get(url);
-
-    // verify response code
-    sendReq.on('response', function(response) {
-        if (response.statusCode !== 200) {
-            return cb('Response status was ' + response.statusCode);
-        }
-    });
-
-    // check for request errors
-    sendReq.on('error', function (err) {
-        fs.unlink(dest);
-        return cb(err.message);
-    });
-
-    sendReq.pipe(file);
-
-    file.on('finish', function() {
-        file.close(cb);  // close() is async, call cb after close completes.
-    });
-
-    file.on('error', function(err) { // Handle errors
-        fs.unlink(dest); // Delete the file async. (But we don't check the result)
-        return cb(err.message);
-    });
-};
-
-//console.log(process.argv.length);
+var async = require("async");
 
 if (process.argv.length > 2) {
 	process.argv.forEach(function (val, index, array) {
@@ -48,13 +18,12 @@ if (process.argv.length > 2) {
 	  }
 	});
 } else {
-	//TODO: transform this hammering into a waterfall scheme with breathing time for server to send responses
-	list_heroes.forEach(function (val, index, array) {
-		getThumb(val['hero']);
+	async.eachSeries(list_heroes, function iteratee(val, callback) {
+		getThumb(val['hero'], function(){ console.log(val['hero'] + ' yata!'); callback(); });
 	});
 }
 
-function getThumb(hero_name) {
+function getThumb(hero_name, cb) {
 	var list = list_heroes.filter( 
 		function(elem, index, array){
 			//console.log(elem);
@@ -64,11 +33,37 @@ function getThumb(hero_name) {
 	
 	if (list.length == 1) {
 		console.log(settings['main_url'] + list[0]['img']);
-		
+
 		var parsed = url.parse(settings['main_url'] + list[0]['img']);
-		var filename = path.basename(parsed.pathname);
-		//console.log(filename);
 		
-		download( settings['main_url'] + list[0]['img'], settings['local_images_path'] + filename, function(){ console.log(filename + ' yata!'); });
+		var myurl = settings['main_url'] + list[0]['img'];
+		var dest = settings['local_images_path'] + path.basename(parsed.pathname);
+		
+		var file = fs.createWriteStream(dest);
+		var sendReq = request.get(myurl);
+
+		// verify response code
+		sendReq.on('response', function(response) {
+			if (response.statusCode !== 200) {
+				return cb('Response status was ' + response.statusCode);
+			}
+		});
+
+		// check for request errors
+		sendReq.on('error', function (err) {
+			fs.unlink(dest);
+			return cb(err.message);
+		});
+
+		sendReq.pipe(file);
+
+		file.on('finish', function() {
+			file.close(cb);  // close() is async, call cb after close completes.
+		});
+
+		file.on('error', function(err) { // Handle errors
+			fs.unlink(dest); // Delete the file async. (But we don't check the result)
+			return cb(err.message);
+		});
 	}
 }

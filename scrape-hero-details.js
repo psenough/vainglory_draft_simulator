@@ -8,8 +8,7 @@ var util = require('util');
 var request = require('request');
 var url = require("url");
 var path = require("path");
-
-//console.log(process.argv.length);
+var async = require("async");
 
 if (process.argv.length > 2) {
 	process.argv.forEach(function (val, index, array) {
@@ -19,13 +18,12 @@ if (process.argv.length > 2) {
 	  }
 	});
 } else {
-	//TODO: transform this hammering into a waterfall scheme with breathing time for server to send responses
-	list_heroes.forEach(function (val, index, array) {
-		getDetails(val['hero']);
+	async.eachSeries(list_heroes, function iteratee(val, callback) {
+		getDetails(val['hero'], function(){ console.log(val['hero'] + ' yata!'); callback(); });
 	});
 }
 
-function getDetails(hero_name) {
+function getDetails(hero_name, cb) {
 	var list = list_heroes.filter( 
 		function(elem, index, array){
 			//console.log(elem);
@@ -68,6 +66,7 @@ function getDetails(hero_name) {
 		  console.log(result);
 		  //console.log(err);
 		  fs.writeFileSync(settings['local_images_path'] + list[0]['hero'].toLowerCase() + '.json', JSON.stringify(result) , 'utf-8');
+		  cb();
 		});
 		
 	}

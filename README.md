@@ -20,35 +20,33 @@ you can use arguments to specify heroes (i.e. `node scrape-vgpro-hero-synergies.
 
 beware that vgpro-hero-synergies is capitalization sensitive about the hero names.
 
+`node merge-hero-data.js` merges all scrapped data into a single .js file that is used by the draft page (loads faster)
+
 to see the draft page use `http-server` to start the localhost server and load the page at http://localhost:8080/
 
 if you don't have http-sever you can install by calling `npm install http-server -g`
 
 ## TODO
 
-* figure out a way to use API to get json with winrates of heroes maybe using `https://github.com/zeroclutch/vainglory-counter-data` ? or vgpro
+* improve readability of hero winrate
 
-* display total winrate of heroes on screen
+* figure out way to edit/display counters, combos and comfort picks preferences
 
-* display winrate of heroes against already specific banned heroes
+* get app accurate hero thumbnails from a screenshot of a device (to be easier to reognize the heroes)
 
-* display winrate of heroes given certain combos and counters
+* prettify look and feel (need designer help)
 
-* figure out way to edit counters, combos and comfort picks
-
-* display custom counter, combos and comfort picks
-
-* get new hero images from a screenshot of a device running the draft
-
-* prettify the background to look similar to real draft
-
-* highlight active person picking
+* highlight who is the active person picking
 
 * clock countdown as seen on draft
 
 * display position and WP/CP on sides (click to alter, helps you see things more clearly)
 
-* split team views with central server to allow real drafting
+* split team views with central server to allow real drafting usage scenario
+
+* toggle on/off auto picker (pick best meta heroes automatically)
+
+* toggle on/off winrate display helpers
 
 ## Credits
 
