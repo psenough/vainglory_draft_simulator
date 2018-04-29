@@ -8,41 +8,23 @@ var util = require('util');
 var request = require('request');
 var url = require("url");
 var path = require("path");
+var async = require("async");
 
-function getFile(url, filename, cb){
-	
-	var options = {
-	  url: url,
-	  headers: {
-		'User-Agent': 'request'
-	  }
-	};
-	
-	function callback(error, response, body) {
-	  if (!error && response.statusCode == 200) {
-		fs.writeFileSync(filename, body, 'utf-8');
-		cb();
-	  }
-	}
-
-	request(options, callback);
-}
-
+let list = [];
 if (process.argv.length > 2) {
 	process.argv.forEach(function (val, index, array) {
 	  //console.log(index + ': ' + val);
 	  if (index >= 2) {
-		getDetails(val);
+		list = getDetails(val);
 	  }
 	});
 } else {
-	//TODO: transform this hammering into a waterfall scheme with breathing time for server to send responses
-	list_heroes.forEach(function (val, index, array) {
-		getDetails(val['hero']);
+	async.eachSeries(list_heroes, function iteratee(val, callback) {
+		getDetails(val['hero'], function(){ console.log(val['hero'] + ' yata!'); callback(); });
 	});
 }
 
-function getDetails(hero_name) {
+function getDetails(hero_name, cb) {
 	var list = list_heroes.filter( 
 		function(elem, index, array){
 			//console.log(elem);
@@ -54,10 +36,25 @@ function getDetails(hero_name) {
 		//var hero_url = settings['main_url'] + list[0]['url']; //vaingloryfire wiki
 		var hero_url = settings['vgpro_api_url'] + list[0]['hero'];
 		console.log(hero_url);
-		
-		// save result to JSON FILE
-		getFile(hero_url, settings['local_images_path'] + list[0]['hero'].toLowerCase() + '-synergies.json', function(){ console.log(list[0]['hero'] + ' yata!');} );
-		
-	}
 
+		var url = hero_url;
+		var filename = settings['local_images_path'] + list[0]['hero'].toLowerCase() + '-synergies.json';
+		//var cb = function(){ console.log(list[0]['hero'] + ' yata!');}
+		
+		var options = {
+		  url: url,
+		  headers: {
+			'User-Agent': 'request'
+		  }
+		};
+		
+		function callback(error, response, body) {
+		  if (!error && response.statusCode == 200) {
+			fs.writeFileSync(filename, body, 'utf-8');
+			cb();
+		  }
+		}
+		
+		request(options, callback);	
+	}
 }

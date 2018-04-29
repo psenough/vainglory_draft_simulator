@@ -9,8 +9,6 @@ var request = require('request');
 var url = require("url");
 var path = require("path");
 
-
-
 var condensed_list = list_heroes.map(function(elem) {
 	var new_elem = {};
 	new_elem = elem;

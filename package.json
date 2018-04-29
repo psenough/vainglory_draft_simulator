@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/psenough/vainglory_draft_simulator#readme",
   "dependencies": {
+    "async": "^2.6.0",
     "html-to-json": "^0.6.0"
   }
 }
