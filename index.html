@@ -211,7 +211,7 @@ body {
 	position: absolute;
 }
 #heroes div {
-	width: 10%;
+	width: 9%;
 	display: inline-block;
 	padding-top: 0.5%;
 	padding-left: 0.5%;
@@ -229,7 +229,7 @@ body {
 
 #heroes div:hover {
 	opacity: 0.5;
-	width: 9%;
+	width: 8%;
 	padding-left: 1%;
 	padding-right: 1%;
 	padding-top: 1%;
@@ -239,6 +239,7 @@ body {
 .hero_img_overlay {
 	position: relative;
 	left: -100%;
+	pointer-events: none;
 }
 
 .hero_text_overlay {
@@ -247,6 +248,7 @@ body {
 	left: -200%;
 	z-index: 20;
 	font-size: 0.85em;
+	pointer-events: none;
 }
 
 .emoji {
@@ -327,9 +329,57 @@ body {
 	height: 20%;
 	position: absolute;
 	bottom: 0px;
-	text-align: center;
 	width: 100%;
 	background-color: grey;
+	overflow-x: scroll;
+	white-space: nowrap;
+}
+
+.chart_caption {
+	position: absolute;
+	top: 0px;
+	text-align: center;
+	width: 100%;
+}
+
+.chart_div {
+	display: inline-block;
+	white-space: nowrap;
+	width: 5%;
+	vertical-align: bottom;
+	height: 100%;
+	position: relative;
+}
+
+.chart_image {
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+}
+
+.chart_image img {
+	width: 100%;
+	height: 100%;
+}
+
+.chart_bar_div {
+	display: inline-block;
+	top: 0%;
+	width: 100%;
+	position: absolute;
+	left: 0%;
+	height: 50%;
+}
+
+.chart_bar {
+	display: inline-block;
+	bottom: 0%;
+	width: 100%;
+	background-color: green;
+	height: 0px;
+	position: absolute;
+	left: 0%;
+	opacity: 0.4;
 }
 
  	</style>

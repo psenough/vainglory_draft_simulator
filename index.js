@@ -34,7 +34,6 @@ function stages(hero_overlay, img_dom, next_text) {
 	document.getElementById('selection-text').innerHTML = next_text;
 }
 
-
 function clearData() {
 	for (var key in heroes_list) {
 		var dom = document.getElementById(heroes_list[key]['hero'].toLowerCase() + '_text_overlay' );
@@ -44,8 +43,12 @@ function clearData() {
 	}
 };
 
+var bottom_html = '';
 
 function showBanRates() {
+	
+	bottom_html = '';
+	
 	for (var key in heroes_list) {
 		var dom = document.getElementById(heroes_list[key]['hero'].toLowerCase() + '_text_overlay' );
 		if (dom) {
@@ -58,6 +61,23 @@ function showBanRates() {
 			dom.innerHTML = '<span class="emoji">'+ br +'</span><br> WR: ' + heroes_list[key]['synergies']['winRate'] + '%<br>BR: ' + heroes_list[key]['synergies']['banRate'] + '%';
 		}
 	}
+	
+	var sorted_ban_list = heroes_list;
+	
+	sorted_ban_list.sort(function(a,b){
+		return b['synergies']['banRate'] - a['synergies']['banRate'];
+	});
+	
+	bottom_html += '<div class="chart_caption">Most banned heroes:</div>';
+	
+	for (var key in sorted_ban_list) {
+		var image_src = settings['local_images_path'] + sorted_ban_list[key]['img'].substring(sorted_ban_list[key]['img'].lastIndexOf('/')+1);
+
+		bottom_html += '<div class="chart_div"><div class="chart_image"><img src="' + image_src + '" /></div><div class="chart_bar_div"><div class="chart_bar" style="height:'+heroes_list[key]['synergies']['banRate']+'%">'+heroes_list[key]['synergies']['banRate']+'</div></div></div>';
+	}
+	
+	document.getElementById("info_footer").innerHTML = bottom_html;
+	
 };
 
 function showWinRates() {
@@ -344,10 +364,14 @@ function loadHeroes() {
 					}
 					//console.log(heroes_list);
 				});
-				//this_hero.addEventListener('touchend', function(e){
-				//	e.preventDefault();
-					// do stuff
-				//});
+				this_hero.addEventListener("mouseover", function() {
+					document.getElementById("info_footer").innerHTML = "hoovering on " + this.id;
+					//TODO: list this hero top synergies and counters
+				});				
+				this_hero.addEventListener("mouseout", function() {
+					document.getElementById("info_footer").innerHTML = bottom_html;
+				});
+
 				var this_hero_img = document.createElement('img');
 				this_hero_img.setAttribute('id', list[key]['hero'].toLowerCase() + '_img' );
 				this_hero_img.setAttribute('src', image_src );
