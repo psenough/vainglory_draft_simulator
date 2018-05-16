@@ -340,12 +340,17 @@ body {
 	top: 0px;
 	text-align: center;
 	width: 100%;
+	z-index: 30;
+}
+
+.chart_caption span {
+	cursor: pointer;
 }
 
 .chart_div {
 	display: inline-block;
 	white-space: nowrap;
-	width: 5%;
+	width: 2.5%;
 	vertical-align: bottom;
 	height: 100%;
 	position: relative;
@@ -371,14 +376,25 @@ body {
 	height: 50%;
 }
 
-.chart_bar {
+.chart_bar_ban {
 	display: inline-block;
 	bottom: 0%;
-	width: 100%;
-	background-color: green;
+	width: 50%;
+	background-color: red;
 	height: 0px;
 	position: absolute;
 	left: 0%;
+	opacity: 0.4;
+}
+
+.chart_bar_win {
+	display: inline-block;
+	bottom: 0%;
+	width: 50%;
+	background-color: green;
+	height: 0px;
+	position: absolute;
+	left: 50%;
 	opacity: 0.4;
 }
 

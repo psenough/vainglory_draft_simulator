@@ -56,9 +56,8 @@ function showBanRates() {
 			if ('action' in heroes_list[key]) continue;
 			
 			var br = '';
-			//if ('top_winrate' in list[key]) wr = '🍏';
 			if ('top_banrate' in heroes_list[key]) br = '🚫';
-			dom.innerHTML = '<span class="emoji">'+ br +'</span><br> WR: ' + heroes_list[key]['synergies']['winRate'] + '%<br>BR: ' + heroes_list[key]['synergies']['banRate'] + '%';
+			dom.innerHTML = '<span class="emoji">'+ br +'</span>';//<br> WR: ' + heroes_list[key]['synergies']['winRate'] + '%<br>BR: ' + heroes_list[key]['synergies']['banRate'] + '%';
 		}
 	}
 	
@@ -68,12 +67,12 @@ function showBanRates() {
 		return b['synergies']['banRate'] - a['synergies']['banRate'];
 	});
 	
-	bottom_html += '<div class="chart_caption">Most banned heroes:</div>';
+	bottom_html += '<div class="chart_caption"><span onclick="javascript:showBanRates()">🚫</span> <span onclick="javascript:showWinRates()">🏆</span></div>';
 	
 	for (var key in sorted_ban_list) {
 		var image_src = settings['local_images_path'] + sorted_ban_list[key]['img'].substring(sorted_ban_list[key]['img'].lastIndexOf('/')+1);
 
-		bottom_html += '<div class="chart_div"><div class="chart_image"><img src="' + image_src + '" /></div><div class="chart_bar_div"><div class="chart_bar" style="height:'+heroes_list[key]['synergies']['banRate']+'%">'+heroes_list[key]['synergies']['banRate']+'</div></div></div>';
+		bottom_html += '<div class="chart_div"><div class="chart_image"><img src="' + image_src + '" title="' + heroes_list[key]['hero'] + ' BR: '+heroes_list[key]['synergies']['banRate']+' WR: '+heroes_list[key]['synergies']['winRate']+'"/></div><div class="chart_bar_div"><div class="chart_bar_ban" style="height:'+heroes_list[key]['synergies']['banRate']+'%"></div><div class="chart_bar_win" style="height:'+heroes_list[key]['synergies']['winRate']+'%"></div></div></div>';
 	}
 	
 	document.getElementById("info_footer").innerHTML = bottom_html;
@@ -81,6 +80,9 @@ function showBanRates() {
 };
 
 function showWinRates() {
+
+	bottom_html = '';
+
 	for (var key in heroes_list) {
 		var dom = document.getElementById(heroes_list[key]['hero'].toLowerCase() + '_text_overlay' );
 		if (dom) {
@@ -89,10 +91,25 @@ function showWinRates() {
 			
 			var wr = '';
 			if ('top_winrate' in heroes_list[key]) wr = '🍏';
-			//if ('top_banrate' in heroes_list[key]) br = '🚫';
-			dom.innerHTML = '<span class="emoji">'+ wr +'</span><br> WR: ' + heroes_list[key]['synergies']['winRate'] + '%<br>BR: ' + heroes_list[key]['synergies']['banRate'] + '%';
+			dom.innerHTML = '<span class="emoji">'+ wr +'</span>';//<br> WR: ' + heroes_list[key]['synergies']['winRate'] + '%<br>BR: ' + heroes_list[key]['synergies']['banRate'] + '%';
 		}
 	}
+
+	var sorted_win_list = heroes_list;
+	
+	sorted_win_list.sort(function(a,b){
+		return b['synergies']['winRate'] - a['synergies']['winRate'];
+	});
+	
+	bottom_html += '<div class="chart_caption"><span onclick="javascript:showBanRates()">🚫</span> <span onclick="javascript:showWinRates()">🏆</span></div>';
+	
+	for (var key in sorted_win_list) {
+		var image_src = settings['local_images_path'] + sorted_win_list[key]['img'].substring(sorted_win_list[key]['img'].lastIndexOf('/')+1);
+
+		bottom_html += '<div class="chart_div"><div class="chart_image"><img src="' + image_src + '" title="' + heroes_list[key]['hero'] + ' BR: '+heroes_list[key]['synergies']['banRate']+' WR: '+heroes_list[key]['synergies']['winRate']+'"/></div><div class="chart_bar_div"><div class="chart_bar_ban" style="height:'+heroes_list[key]['synergies']['banRate']+'%"></div><div class="chart_bar_win" style="height:'+heroes_list[key]['synergies']['winRate']+'%"></div></div></div>';
+	}
+	
+	document.getElementById("info_footer").innerHTML = bottom_html;
 };
 
 function showCounters(pick_order) {
