@@ -43,77 +43,181 @@ function clearData() {
 	}
 };
 
-var bottom_html = '';
+var last_hero = '';
 
-function showBanRates() {
-	
-	bottom_html = '';
-	
-	for (var key in heroes_list) {
-		var dom = document.getElementById(heroes_list[key]['hero'].toLowerCase() + '_text_overlay' );
+var order_by = 'win';
+
+function placeEmoji(sorted_list, emoji, max_counter) {
+	let count = 0;
+	for (var key in sorted_list) {
+		var dom = document.getElementById(sorted_list[key]['hero'].toLowerCase() + '_text_overlay' );
 		if (dom) {
-			// if already picked, ignore
-			if ('action' in heroes_list[key]) continue;
-			
-			var br = '';
-			if ('top_banrate' in heroes_list[key]) br = '🚫';
-			dom.innerHTML = '<span class="emoji">'+ br +'</span>';//<br> WR: ' + heroes_list[key]['synergies']['winRate'] + '%<br>BR: ' + heroes_list[key]['synergies']['banRate'] + '%';
+			dom.innerHTML = '';
 		}
 	}
+	for (var key in sorted_list) {
+		var dom = document.getElementById(sorted_list[key]['hero'].toLowerCase() + '_text_overlay' );
+		if (dom) {
+			if ('action' in sorted_list[key]) continue;
+			dom.innerHTML = '<span class="emoji">'+emoji+'</span>';
+		}
+		count++;
+		if (count > max_counter) return;
+	}
+}
+
+function showCharts() {
 	
-	var sorted_ban_list = heroes_list;
+	let bottom_html = '';
 	
-	sorted_ban_list.sort(function(a,b){
-		return b['synergies']['banRate'] - a['synergies']['banRate'];
+	var counters = heroes_list.map(function(elem) {
+		for (var s in elem['synergies']['playingAgainst']) {
+			if (elem['synergies']['playingAgainst'][s]['key'].toLowerCase() == last_hero) {
+				let temp = elem['synergies']['playingAgainst'][s];
+				temp['hero'] = elem['hero'];
+				return temp;
+			}
+		}
+		return {};
+	});
+
+	let sorted_list = heroes_list.map(function(elem) {
+		let out_elem = elem;
+		out_elem['synergy_wr'] = 0;
+		out_elem['counter_wr'] = 0;
+		for (var s in elem['synergies']['playingWith']) {
+			if (elem['synergies']['playingWith'][s]['key'].toLowerCase() == last_hero) {
+				//console.log('synergy of ' + elem['hero'] + ' with ' + h + ': ' + elem['synergies']['playingWith'][s]['winRate'] );
+				out_elem['synergy_wr'] = elem['synergies']['playingWith'][s]['winRate'];
+				continue;
+			}
+		}
+		for (var s in counters) {
+			if (counters[s]['hero'] == elem['hero']) {
+				out_elem['counter_wr'] = counters[s]['winRate'];
+				continue;
+			}
+		}
+		return out_elem;
 	});
 	
-	bottom_html += '<div class="chart_caption"><span onclick="javascript:showBanRates()">🚫</span> <span onclick="javascript:showWinRates()">🏆</span></div>';
+	switch(order_by) {
+		case 'ban':
+		default:
+		{
+			sorted_list.sort(function(a,b){
+				return b['synergies']['banRate'] - a['synergies']['banRate'];
+			});
+			placeEmoji(sorted_list,'🚫',10);
+		}
+		break;
+		case 'win':
+		{
+			sorted_list.sort(function(a,b){
+				return b['synergies']['winRate'] - a['synergies']['winRate'];
+			});
+			placeEmoji(sorted_list,'🏆',10);
+		}
+		break;
+		case 'synergies':
+		{
+			sorted_list.sort(function(a,b){
+				return b['synergy_wr'] - a['synergy_wr'];
+			});
+			placeEmoji(sorted_list,'👬',10);
+		}
+		break;
+		case 'counters':
+		{
+			sorted_list.sort(function(a,b){
+				return b['counter_wr'] - a['counter_wr'];
+			});
+			placeEmoji(sorted_list,'😈',10);
+		}
+		break;
+	}
 	
-	for (var key in sorted_ban_list) {
-		var image_src = settings['local_images_path'] + sorted_ban_list[key]['img'].substring(sorted_ban_list[key]['img'].lastIndexOf('/')+1);
+	bottom_html += '<div class="chart_caption"><span class="st_br" onclick="javascript:showBanRates()">ban rate 🚫</span> <span class="st_wr" onclick="javascript:showWinRates()">win rate 🏆</span> <span class="st_sr" onclick="javascript:showHeroSynergiesChart()">synergies with '+last_hero+' 👬</span> <span class="st_cr" onclick="javascript:showHeroCountersChart()">counters to '+last_hero+' 😈</span></div>';
+	
+	for (var key in sorted_list) {
+		var image_src = settings['local_images_path'] + sorted_list[key]['img'].substring(sorted_list[key]['img'].lastIndexOf('/')+1);
 
-		bottom_html += '<div class="chart_div"><div class="chart_image"><img src="' + image_src + '" title="' + heroes_list[key]['hero'] + ' BR: '+heroes_list[key]['synergies']['banRate']+' WR: '+heroes_list[key]['synergies']['winRate']+'"/></div><div class="chart_bar_div"><div class="chart_bar_ban" style="height:'+heroes_list[key]['synergies']['banRate']+'%"></div><div class="chart_bar_win" style="height:'+heroes_list[key]['synergies']['winRate']+'%"></div></div></div>';
+		bottom_html += '<div class="chart_div">';
+		bottom_html += '<div class="chart_image">';
+		bottom_html += '<img src="' + image_src + '" title="' + sorted_list[key]['hero'] + ' 🚫'+sorted_list[key]['synergies']['banRate']+' 🏆'+sorted_list[key]['synergies']['winRate']+' 👬'+sorted_list[key]['synergy_wr']+' 😈'+sorted_list[key]['counter_wr']+'"/>';
+		bottom_html += '</div>';
+		bottom_html += '<div class="chart_bar_div">';
+		bottom_html += '<div class="chart_bar_ban" style="height:'+sorted_list[key]['synergies']['banRate']+'%"></div>';
+		bottom_html += '<div class="chart_bar_win" style="height:'+sorted_list[key]['synergies']['winRate']+'%"></div>';
+		bottom_html += '<div class="chart_bar_syn" style="height:'+sorted_list[key]['synergy_wr']+'%"></div>';
+		bottom_html += '<div class="chart_bar_counter" style="height:'+sorted_list[key]['counter_wr']+'%"></div>';
+		bottom_html += '</div>';
+		bottom_html += '</div>';
 	}
 	
 	document.getElementById("info_footer").innerHTML = bottom_html;
 	
+}
+
+function showBanRates() {
+	order_by = 'ban';
+	showCharts();
 };
 
 function showWinRates() {
-
-	bottom_html = '';
-
-	for (var key in heroes_list) {
-		var dom = document.getElementById(heroes_list[key]['hero'].toLowerCase() + '_text_overlay' );
-		if (dom) {
-			// if already picked, ignore
-			if ('action' in heroes_list[key]) continue;
-			
-			var wr = '';
-			if ('top_winrate' in heroes_list[key]) wr = '🍏';
-			dom.innerHTML = '<span class="emoji">'+ wr +'</span>';//<br> WR: ' + heroes_list[key]['synergies']['winRate'] + '%<br>BR: ' + heroes_list[key]['synergies']['banRate'] + '%';
-		}
-	}
-
-	var sorted_win_list = heroes_list;
-	
-	sorted_win_list.sort(function(a,b){
-		return b['synergies']['winRate'] - a['synergies']['winRate'];
-	});
-	
-	bottom_html += '<div class="chart_caption"><span onclick="javascript:showBanRates()">🚫</span> <span onclick="javascript:showWinRates()">🏆</span></div>';
-	
-	for (var key in sorted_win_list) {
-		var image_src = settings['local_images_path'] + sorted_win_list[key]['img'].substring(sorted_win_list[key]['img'].lastIndexOf('/')+1);
-
-		bottom_html += '<div class="chart_div"><div class="chart_image"><img src="' + image_src + '" title="' + heroes_list[key]['hero'] + ' BR: '+heroes_list[key]['synergies']['banRate']+' WR: '+heroes_list[key]['synergies']['winRate']+'"/></div><div class="chart_bar_div"><div class="chart_bar_ban" style="height:'+heroes_list[key]['synergies']['banRate']+'%"></div><div class="chart_bar_win" style="height:'+heroes_list[key]['synergies']['winRate']+'%"></div></div></div>';
-	}
-	
-	document.getElementById("info_footer").innerHTML = bottom_html;
+	order_by = 'win';
+	showCharts();
 };
 
+var showing_synergies = false;
+
+function showHeroSynergiesChart() {
+	order_by = 'synergies';
+	showCharts();
+	/*
+	let h = last_hero;
+	
+	console.log('showing synergies with ' + h);
+	
+	let synergies_list = heroes_list.filter((elem, index, arr) => elem['hero'].toLowerCase() !== h);
+
+	synergies_list = synergies_list.map(function(elem) {
+		let out_elem = elem;
+		for (var s in elem['synergies']['playingWith']) {
+			if (elem['synergies']['playingWith'][s]['key'].toLowerCase() == h) {
+				//console.log('synergy of ' + elem['hero'] + ' with ' + h + ': ' + elem['synergies']['playingWith'][s]['winRate'] );
+				out_elem['synergy_wr'] = elem['synergies']['playingWith'][s]['winRate'];
+				out_elem['synergy_pr'] = elem['synergies']['playingWith'][s]['pickRate'];
+				continue;
+			}
+		}
+		return out_elem;
+	});
+	//console.log(synergies_list);
+	synergies_list.sort(function(a,b){
+		return b['synergy_wr'] - a['synergy_wr'];
+	});
+	
+	//console.log(synergies_list);
+	
+	var temp_html = '<div class="chart_caption"><span class="st_wr">win rate</span> <span class="st_pr">pick rate</span></div>'; //'<div class="chart_caption"><span onclick="javascript:showHeroSynergiesChart('+h+')">👬</span> <span onclick="javascript:showHeroCountersChart('+h+')">😈</span></div>';
+	
+	for (var key in synergies_list) {
+		var image_src = settings['local_images_path'] + synergies_list[key]['img'].substring(synergies_list[key]['img'].lastIndexOf('/')+1);
+
+		temp_html += '<div class="chart_div"><div class="chart_image"><img src="' + image_src + '" title="' + synergies_list[key]['hero'] + ' WR: '+synergies_list[key]['synergy_wr']+' PR: '+synergies_list[key]['synergy_pr']+'"/></div><div class="chart_bar_div"><div class="chart_bar_ban" style="height:'+synergies_list[key]['synergy_wr']+'%"></div><div class="chart_bar_win" style="height:'+synergies_list[key]['synergy_pr']+'%"></div></div></div>';
+	}
+	
+	document.getElementById("info_footer").innerHTML = temp_html;
+	*/
+};
+
+function showHeroCountersChart() {
+	order_by = 'counters';
+	showCharts();
+}
 function showCounters(pick_order) {
-	let h = '';
+/*	let h = '';
 	for (var k in heroes_list) {
 		if (heroes_list[k]['action'] == pick_order) h = heroes_list[k]['hero'];
 	}
@@ -149,13 +253,11 @@ function showCounters(pick_order) {
 			dom.innerHTML = 'WR: ' + wr + '%<br>PR: ' + pr + '%';
 		}
 	}
-	
-	//TODO: add emoji to highest winrate
+	*/
 };
 
-
 function showSynergies(pick_order) {
-	let h = '';
+/*	let h = '';
 	for (var k in heroes_list) {
 		if (heroes_list[k]['action'] == pick_order) h = heroes_list[k]['hero'];
 	}
@@ -168,7 +270,7 @@ function showSynergies(pick_order) {
 		var dom = document.getElementById(heroes_list[key]['hero'].toLowerCase() + '_text_overlay' );
 		if (dom) {
 			let wr = pr = '';
-			// check counter winrate
+			// check playing with winrate
 			for (var s in heroes_list[key]['synergies']['playingWith']) {
 				if (heroes_list[key]['synergies']['playingWith'][s]['key'] == h) {
 					wr = heroes_list[key]['synergies']['playingWith'][s]['winRate'];
@@ -178,7 +280,7 @@ function showSynergies(pick_order) {
 			dom.innerHTML = 'WR: ' + wr + '%<br>PR: ' + pr + '%';
 		}
 	}
-	
+	*/
 	//TODO: add emoji to highest winrate
 };
 
@@ -382,11 +484,17 @@ function loadHeroes() {
 					//console.log(heroes_list);
 				});
 				this_hero.addEventListener("mouseover", function() {
-					document.getElementById("info_footer").innerHTML = "hoovering on " + this.id;
-					//TODO: list this hero top synergies and counters
+					//document.getElementById("info_footer").innerHTML = "hoovering on " + this.id;
+					last_hero = this.id;
+					showCharts();
+					/*if (showing_synergies === false) {
+						showing_synergies = true;
+						showHeroSynergiesChart();
+					}*/
 				});				
 				this_hero.addEventListener("mouseout", function() {
-					document.getElementById("info_footer").innerHTML = bottom_html;
+					//document.getElementById("info_footer").innerHTML = bottom_html;
+					//showing_synergies = false;
 				});
 
 				var this_hero_img = document.createElement('img');
