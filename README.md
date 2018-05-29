@@ -48,6 +48,32 @@ if you don't have http-sever you can install by calling `npm install http-server
 
 * toggle on/off winrate display helpers
 
+Suggestions by shutterfly:
+ * Remove the red/blue/strikethrough from the hero icons because it's redundant and tint them instead
+ * Highlight the side that picks/bans with a lighter shade
+ * Given the team's and the enemy team's roster, calculate the advantage gained/lost for all of the heroes left, tint suggested picks green and bad picks red.
+ * Add hovers to the hero icons that have a tooltip. Inside the tooltip, provide the reason for the suggestion as a list with statistics. For example, with Marlene on Team A, Adagio on Team B, hovering Baron for B pick "Baron counters Adagio (positive), Baron synergizes with Adagio (positive)"
+ * Remove the graphs on the bottom
+
+ The challenge of a draft proposer is to find the best ally for a team A of N heroes and a team B of M heroes, having only tuples of synergy and counter data(edited)
+Team A's heroes: A
+Team B's heroes: B
+Left over heroes: H
+((hero1, hero2), win rate) for synergies are in S
+((hero1, hero2), win rate) for counters are in C
+
+Team A's chance of winning (pseudo code):
+chanceOfWinning(A, B) := (
+  + sum of ( map a1 in A, a2 in A to S[(a1, a2)] ) / ( (length of A) ^ 2 )  # + synergies in A
+  + sum of ( map a1 in A, b1 in B to C[(a1, b1)] ) / ( (length of A) * (length of B) )  # + counters A to B
+  - sum of ( map b1 in B, b2 in B to S[(b1, b2)] ) / ( (length of B) ^ 2 )  # - synergies in B
+  - sum of ( map b1 in B, a1 in A to C[(b1, a1)] ) / ( (length of A) * (length of B) )  # + counters B to A
+) / 2
+
+Team B's chance of winning would be the inverse.
+For an open pick h in H the advantage / disadvantage of the pick for the team is chanceOfWinning(A, B) - chanceOfWinning(A + [h], B) for the A side or chanceOfWinning(A, B) - chanceOfWinning(A, B + [h]) on B side.
+scnr - this problem has kept me awake during many evenings and I never had the time / chance to write the code for it :(
+ 
 ## Credits
 
 Coded by ps with some help by physiX and 4ever.

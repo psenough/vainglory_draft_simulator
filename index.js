@@ -30,6 +30,7 @@ function stages(hero_overlay, img_dom, next_text) {
 			dom.src = 'images/'+hero_overlay;
 		}
 		document.getElementById(img_dom).src = settings['local_images_path'] + heroes_list[found]['img'].substring(heroes_list[found]['img'].lastIndexOf('/')+1);
+		document.getElementById(img_dom).classList.remove("active_position");
 	}
 	document.getElementById('selection-text').innerHTML = next_text;
 }
@@ -156,7 +157,6 @@ function showCharts() {
 	}
 	
 	document.getElementById("info_footer").innerHTML = bottom_html;
-	
 }
 
 function showBanRates() {
@@ -174,115 +174,12 @@ var showing_synergies = false;
 function showHeroSynergiesChart() {
 	order_by = 'synergies';
 	showCharts();
-	/*
-	let h = last_hero;
-	
-	console.log('showing synergies with ' + h);
-	
-	let synergies_list = heroes_list.filter((elem, index, arr) => elem['hero'].toLowerCase() !== h);
-
-	synergies_list = synergies_list.map(function(elem) {
-		let out_elem = elem;
-		for (var s in elem['synergies']['playingWith']) {
-			if (elem['synergies']['playingWith'][s]['key'].toLowerCase() == h) {
-				//console.log('synergy of ' + elem['hero'] + ' with ' + h + ': ' + elem['synergies']['playingWith'][s]['winRate'] );
-				out_elem['synergy_wr'] = elem['synergies']['playingWith'][s]['winRate'];
-				out_elem['synergy_pr'] = elem['synergies']['playingWith'][s]['pickRate'];
-				continue;
-			}
-		}
-		return out_elem;
-	});
-	//console.log(synergies_list);
-	synergies_list.sort(function(a,b){
-		return b['synergy_wr'] - a['synergy_wr'];
-	});
-	
-	//console.log(synergies_list);
-	
-	var temp_html = '<div class="chart_caption"><span class="st_wr">win rate</span> <span class="st_pr">pick rate</span></div>'; //'<div class="chart_caption"><span onclick="javascript:showHeroSynergiesChart('+h+')">👬</span> <span onclick="javascript:showHeroCountersChart('+h+')">😈</span></div>';
-	
-	for (var key in synergies_list) {
-		var image_src = settings['local_images_path'] + synergies_list[key]['img'].substring(synergies_list[key]['img'].lastIndexOf('/')+1);
-
-		temp_html += '<div class="chart_div"><div class="chart_image"><img src="' + image_src + '" title="' + synergies_list[key]['hero'] + ' WR: '+synergies_list[key]['synergy_wr']+' PR: '+synergies_list[key]['synergy_pr']+'"/></div><div class="chart_bar_div"><div class="chart_bar_ban" style="height:'+synergies_list[key]['synergy_wr']+'%"></div><div class="chart_bar_win" style="height:'+synergies_list[key]['synergy_pr']+'%"></div></div></div>';
-	}
-	
-	document.getElementById("info_footer").innerHTML = temp_html;
-	*/
 };
 
 function showHeroCountersChart() {
 	order_by = 'counters';
 	showCharts();
 }
-function showCounters(pick_order) {
-/*	let h = '';
-	for (var k in heroes_list) {
-		if (heroes_list[k]['action'] == pick_order) h = heroes_list[k]['hero'];
-	}
-	
-	var counters = heroes_list.map(function(elem) {
-		for (var s in elem['synergies']['playingAgainst']) {
-			if (elem['synergies']['playingAgainst'][s]['key'] == h) {
-				let temp = elem['synergies']['playingAgainst'][s];
-				temp['hero'] = elem['hero'];
-				return temp;
-			}
-		}
-		//heroes_list[elem]['synergies']['playingAgainst']
-		return {};
-	});
-	
-	console.log('showing counters to ' + h);
-	//console.log(counters);
-	
-	for (var key in heroes_list) {
-		if ('action' in heroes_list[key]) continue;
-		
-		var dom = document.getElementById(heroes_list[key]['hero'].toLowerCase() + '_text_overlay' );
-		if (dom) {
-			let wr = pr = '';
-			// check counter winrate
-			for (var s in counters) {
-				if (counters[s]['hero'] == heroes_list[key]['hero']) {
-					wr = counters[s]['winRate'];
-					pr = counters[s]['pickRate'];
-				}
-			}
-			dom.innerHTML = 'WR: ' + wr + '%<br>PR: ' + pr + '%';
-		}
-	}
-	*/
-};
-
-function showSynergies(pick_order) {
-/*	let h = '';
-	for (var k in heroes_list) {
-		if (heroes_list[k]['action'] == pick_order) h = heroes_list[k]['hero'];
-	}
-	
-	console.log('showing synergies with ' + h);
-	
-	for (var key in heroes_list) {
-		if ('action' in heroes_list[key]) continue;
-		
-		var dom = document.getElementById(heroes_list[key]['hero'].toLowerCase() + '_text_overlay' );
-		if (dom) {
-			let wr = pr = '';
-			// check playing with winrate
-			for (var s in heroes_list[key]['synergies']['playingWith']) {
-				if (heroes_list[key]['synergies']['playingWith'][s]['key'] == h) {
-					wr = heroes_list[key]['synergies']['playingWith'][s]['winRate'];
-					pr = heroes_list[key]['synergies']['playingWith'][s]['pickRate'];
-				}
-			}
-			dom.innerHTML = 'WR: ' + wr + '%<br>PR: ' + pr + '%';
-		}
-	}
-	*/
-	//TODO: add emoji to highest winrate
-};
 
 function stepState() {
 	state++;
@@ -295,58 +192,72 @@ function stepState() {
 			switch(state) {
 				case 1: 
 					document.getElementById('selection-text').innerHTML = 'player 1 selecting 1st ban';
+					document.getElementById('left-ban1-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 2:
 					stages('ban_small_blue.png', 'left-ban1-img', 'player 2 selecting 2nd ban');
+					document.getElementById('right-ban2-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 3: 
 					stages('ban_small_red.png', 'right-ban2-img', 'player 2 selecting 3rd ban');
+					document.getElementById('right-ban1-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 4: 
 					stages('ban_small_red.png', 'right-ban1-img', 'player 1 selecting 4th ban');
+					document.getElementById('left-ban2-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 5: 
 					stages('ban_small_blue.png', 'left-ban2-img', 'player 1 selecting hero');
+					document.getElementById('player_1_pick_img').classList.add("active_position");
 					showWinRates();
 				break;
 				case 6: 
 					stages('blue.png', 'player_1_pick_img', 'player 2 selecting hero');
+					document.getElementById('player_2_pick_img').classList.add("active_position");
 					showCounters(5);
 				break;
 				case 7: 
 					stages('red.png', 'player_2_pick_img', 'player 3 selecting hero');
+					document.getElementById('player_3_pick_img').classList.add("active_position");
 					showSynergies(6);
 				break;
 				case 8: 
 					stages('red.png', 'player_3_pick_img', 'player 4 selecting hero');
+					document.getElementById('player_4_pick_img').classList.add("active_position");
 					showCounters(7);
 				break;
 				case 9:
 					stages('blue.png', 'player_4_pick_img', 'player 5 selecting hero');
+					document.getElementById('player_5_pick_img').classList.add("active_position");
 					showSynergies(8);					
 				break;
 				case 10: 
-					stages('blue.png', 'player_5_pick_img', 'player 6 selecting hero');	
+					stages('blue.png', 'player_5_pick_img', 'player 6 selecting hero');
+					document.getElementById('player_6_pick_img').classList.add("active_position");
 					showCounters(9);					
 				break;
 				case 11: 
 					stages('red.png', 'player_6_pick_img', 'player 7 selecting hero');
+					document.getElementById('player_7_pick_img').classList.add("active_position");
 					showSynergies(10);					
 				break;
 				case 12: 
 					stages('red.png', 'player_7_pick_img', 'player 8 selecting hero');
+					document.getElementById('player_8_pick_img').classList.add("active_position");
 					showCounters(11);
 				break;
 				case 13: 
 					stages('blue.png', 'player_8_pick_img', 'player 9 selecting hero');
+					document.getElementById('player_9_pick_img').classList.add("active_position");
 					showSynergies(12);
 				break;
 				case 14: 
 					stages('blue.png', 'player_9_pick_img', 'player 10 selecting hero');
+					document.getElementById('player_10_pick_img').classList.add("active_position");
 					showCounters(13);					
 				break;
 				case 15: 
@@ -360,66 +271,82 @@ function stepState() {
 			switch(state) {
 				case 1: 
 					document.getElementById('selection-text').innerHTML = 'blue team banning';
+					document.getElementById('left-ban1-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 2:
 					stages('ban_small_blue.png', 'left-ban1-img', 'red team banning');
+					document.getElementById('right-ban3-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 3: 
 					stages('ban_small_red.png', 'right-ban3-img', 'blue team selecting hero');	
+					document.getElementById('player_1_pick_img').classList.add("active_position");
 					showWinRates();
 				break;
 				case 4: 
 					stages('blue.png', 'player_1_pick_img', 'red team selecting hero');
+					document.getElementById('player_2_pick_img').classList.add("active_position");
 					showCounters(3);
 				break;
 				case 5:
 					stages('red.png', 'player_2_pick_img', 'red team selecting hero');
+					document.getElementById('player_3_pick_img').classList.add("active_position");
 					showSynergies(4);
 				break;
 				case 6: 
 					stages('red.png', 'player_3_pick_img', 'blue team selecting hero');	
+					document.getElementById('player_4_pick_img').classList.add("active_position");
 					showCounters(5);
 				break;
 				case 7: 
 					stages('blue.png', 'player_4_pick_img', 'red team banning');
+					document.getElementById('right-ban2-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 8:
 					stages('ban_small_blue.png', 'right-ban2-img', 'blue team banning');
+					document.getElementById('left-ban2-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 9: 
 					stages('ban_small_red.png', 'left-ban2-img', 'red team selecting hero');
+					document.getElementById('player_6_pick_img').classList.add("active_position");
 					showCounters(6);
 				break;
 				case 10:
 					stages('red.png', 'player_6_pick_img', 'blue team selecting hero');
+					document.getElementById('player_5_pick_img').classList.add("active_position");
 					showCounters(9);
 				break;
 				case 11: 
 					stages('blue.png', 'player_5_pick_img', 'blue team selecting hero');
+					document.getElementById('player_8_pick_img').classList.add("active_position");
 					showSynergies(10);
 				break;
 				case 12: 
 					stages('blue.png', 'player_8_pick_img', 'red team selecting hero');
+					document.getElementById('player_7_pick_img').classList.add("active_position");
 					showCounters(11);
 				break;
 				case 13: 
 					stages('red.png', 'player_7_pick_img', 'blue team banning');
+					document.getElementById('left-ban3-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 14: 
 					stages('ban_small_blue.png', 'left-ban3-img', 'red team banning');
+					document.getElementById('right-ban1-img').classList.add("active_position");
 					showBanRates();
 				break;
 				case 15: 
 					stages('ban_small_red.png', 'right-ban1-img', 'blue team selecting hero');
+					document.getElementById('player_9_pick_img').classList.add("active_position");
 					showCounters(12);
 				break;
 				case 16: 
 					stages('blue.png', 'player_9_pick_img', 'red team selecting hero');
+					document.getElementById('player_10_pick_img').classList.add("active_position");
 					showCounters(15);
 				break;
 				case 17: 

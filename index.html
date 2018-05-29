@@ -54,6 +54,8 @@ body {
 	width: 33%;
 	display: inline-block;
 	white-space: nowrap;
+	padding-top: 1%;
+	padding-left: 1%
 }
 
 #left-ban1 {
@@ -88,6 +90,7 @@ body {
 .ban-img-overlay {
 	position: relative;
 	left: -100%;
+	opacity: 0.25;
 }
 
 #timer-bg {
@@ -115,6 +118,8 @@ body {
 	white-space: nowrap;
 	text-align: right;
 	position: absolute;
+	padding-top: 1%;
+	padding-right: 1%;
 }
 
 #right-ban1 {
@@ -331,9 +336,13 @@ body {
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	background-color: grey;
 	overflow-x: scroll;
 	white-space: nowrap;
+	background-color: #aaa;
+	
+	box-shadow: 
+        inset 0px 11px 8px -10px #000,
+        inset 0px -11px 8px -10px #000; 
 }
 
 .chart_caption {
@@ -342,6 +351,7 @@ body {
 	text-align: center;
 	width: 100%;
 	z-index: 30;
+	padding-top: 10px;
 }
 
 .chart_caption span {
@@ -356,6 +366,10 @@ body {
 	height: 100%;
 	position: relative;
 }
+
+.chart_div:nth-of-type(10), .chart_div:nth-of-type(20), .chart_div:nth-of-type(30) {
+	margin-right: 10px;
+} 
 
 .chart_image {
 	display: inline-block;
@@ -424,29 +438,50 @@ body {
 .st_br {
 	background-color: red;
 	opacity: 0.7;
+	padding-left: 5px;
+	border-radius: 10px;
 }
 
 .st_wr {
 	background-color: green;
 	opacity: 0.7;
+	padding-left: 5px;
+	border-radius: 10px;
 }
 
 .st_sr {
 	background-color: blue;
 	opacity: 0.7;
+	padding-left: 5px;
+	border-radius: 10px;
 }
 
 .st_cr {
 	background-color: purple;
 	opacity: 0.7;
+	padding-left: 5px;
+	border-radius: 10px;
 }
+
+@-webkit-keyframes whitePulse {
+  from { background-color: #000; -webkit-box-shadow: 0 0 9px #333; opacity: 0.8; }
+  50% { background-color: #fff; -webkit-box-shadow: 0 0 18px #fff; opacity: 1.0; }
+  to { background-color: #000; -webkit-box-shadow: 0 0 9px #333; opacity: 0.8; }
+}
+
+.active_position {
+  -webkit-animation-name: whitePulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+
+}
+
 
  	</style>
 	</head>
 	<body>
 		<div id="header">
 			<div id="left-bans">
-				<div id="left-bans-text">BANS</div>
 				<div id="left-ban1"><img id="left-ban1-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
 				<div id="left-ban2"><img id="left-ban2-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
 				<div id="left-ban3"><img id="left-ban3-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
@@ -456,7 +491,6 @@ body {
 				<div id="selection-text">...</div>
 			</div>
 			<div id="right-bans">
-				<div id="right-bans-text">BANS</div>
 				<div id="right-ban1"><img id="right-ban1-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
 				<div id="right-ban2"><img id="right-ban2-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
 				<div id="right-ban3"><img id="right-ban3-img" src="./images/black.png" /><img class="ban-img-overlay" src="./images/ban_small.png" /></div>
