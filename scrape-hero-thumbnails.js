@@ -14,7 +14,7 @@ if (process.argv.length > 2) {
 	process.argv.forEach(function (val, index, array) {
 	  //console.log(index + ': ' + val);
 	  if (index >= 2) {
-		getThumb(val);
+		getThumb(val, function(){ console.log(val + ' yata!'); });
 	  }
 	});
 } else {
@@ -58,7 +58,9 @@ function getThumb(hero_name, cb) {
 		sendReq.pipe(file);
 
 		file.on('finish', function() {
-			file.close(cb);  // close() is async, call cb after close completes.
+			// is using pipe so it shouldnt require close the file, says so on the internet so it must be true!!!!
+			//file.close(cb);  // close() is async, call cb after close completes.
+			cb();
 		});
 
 		file.on('error', function(err) { // Handle errors
