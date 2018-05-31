@@ -454,6 +454,8 @@ function loadHeroes() {
 
 var settings;
 var mode = 'ranked'; // default mode when there is no query argument on url
+var positions = ['top','mid','bot','jungler','captain'];
+var types = ['cp','wp','roam'];
 
 window.onload = function() {
 	// get mode
@@ -468,6 +470,28 @@ window.onload = function() {
 		for (var i=1; i<=10; i++) {
 			document.getElementById('player_'+i+'_number').style.display = 'none';
 		}
+	}
+	
+	// make positions and types clickable
+	for (var i=1; i<11; i++) {
+		var dom_pos = document.getElementById('player_'+i+'_pos_img');
+		dom_pos.addEventListener("mousedown", function() {
+			var temp = this.src.split("/");
+			var temp2 = temp[temp.length-1].split(".");
+			var thispos = positions.findIndex(function(element){return element == temp2[0];});
+			thispos++;
+			if (thispos >= positions.length) thispos = 0;
+			this.src = './images/'+positions[thispos]+'.png';
+		});
+		var dom_types = document.getElementById('player_'+i+'_type_img');
+		dom_types.addEventListener("mousedown", function() {
+			var temp = this.src.split("/");
+			var temp2 = temp[temp.length-1].split(".");
+			var thispos = types.findIndex(function(element){return element == temp2[0];});
+			thispos++;
+			if (thispos >= types.length) thispos = 0;
+			this.src = './images/'+types[thispos]+'.png';
+		});
 	}
 	
 	// load settings
@@ -497,3 +521,5 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+

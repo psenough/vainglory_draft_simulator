@@ -204,13 +204,39 @@ body {
 .left-player-pick {
 	display: inline-block;
 	position: absolute;
-	top: 0p%;
+	top: 0%;
 	right: 6%;
 	z-index: 10;
 	height: 100%;
 }
 
 .left-player-pick img {
+	height: 100%;
+} 
+
+.left-player-pos {
+	display: inline-block;
+	position: absolute;
+	top: 25%;
+	right: 75%;
+	z-index: 10;
+	height: 50%;
+}
+
+.left-player-pos img {
+	height: 100%;
+} 
+
+.left-player-type {
+	display: inline-block;
+	position: absolute;
+	top: 25%;
+	right: 50%;
+	z-index: 10;
+	height: 50%;
+}
+
+.left-player-type img {
 	height: 100%;
 } 
 
@@ -312,6 +338,32 @@ body {
 }
 
 .right-player-pick img {
+	height: 100%;
+}
+
+.right-player-pos {
+	display: inline-block;
+	position: absolute;
+	top: 25%;
+	left: 70%;
+	z-index: 10;
+	height: 50%;
+}
+
+.right-player-pos img {
+	height: 100%;
+} 
+
+.right-player-type {
+	display: inline-block;
+	position: absolute;
+	top: 25%;
+	left: 45%;
+	z-index: 10;
+	height: 50%;
+}
+
+.right-player-type img {
 	height: 100%;
 }
 
@@ -508,26 +560,36 @@ body {
 					<div id="player_1_name" class="left-player-name"></div>
 					<div id="player_1_number" class="left-player-number">1</div>
 					<div id="player_1_pick" class="left-player-pick"><img id="player_1_pick_img" src="./images/black.png" /></div>
+					<div id="player_1_pos" class="left-player-pos"><img id="player_1_pos_img" src="./images/mid.png" /></div>
+					<div id="player_1_type" class="left-player-type"><img id="player_1_type_img" src="./images/cp.png" /></div>
 				</div>
 				<div id="player_4" class="left-player">
 					<div id="player_4_name" class="left-player-name"></div>
 					<div id="player_4_number" class="left-player-number">4</div>
 					<div id="player_4_pick" class="left-player-pick"><img id="player_4_pick_img" src="./images/black.png" /></div>
+					<div id="player_4_pos" class="left-player-pos"><img id="player_4_pos_img" src="./images/captain.png" /></div>
+					<div id="player_4_type" class="left-player-type"><img id="player_4_type_img" src="./images/roam.png" /></div>
 				</div>
 				<div id="player_5" class="left-player">
 					<div id="player_5_name" class="left-player-name"></div>
 					<div id="player_5_number" class="left-player-number">5</div>
 					<div id="player_5_pick" class="left-player-pick"><img id="player_5_pick_img" src="./images/black.png" /></div>
+					<div id="player_5_pos" class="left-player-pos"><img id="player_5_pos_img" src="./images/bot.png" /></div>
+					<div id="player_5_type" class="left-player-type"><img id="player_5_type_img" src="./images/wp.png" /></div>
 				</div>
 				<div id="player_8" class="left-player">
 					<div id="player_8_name" class="left-player-name"></div>
 					<div id="player_8_number" class="left-player-number">8</div>
 					<div id="player_8_pick" class="left-player-pick"><img id="player_8_pick_img" src="./images/black.png" /></div>
+					<div id="player_8_pos" class="left-player-pos"><img id="player_8_pos_img" src="./images/jungler.png" /></div>
+					<div id="player_8_type" class="left-player-type"><img id="player_8_type_img" src="./images/wp.png" /></div>
 				</div>
 				<div id="player_9" class="left-player">
 					<div id="player_9_name" class="left-player-name"></div>
 					<div id="player_9_number" class="left-player-number">9</div>
 					<div id="player_9_pick" class="left-player-pick"><img id="player_9_pick_img" src="./images/black.png" /></div>
+					<div id="player_9_pos" class="left-player-pos"><img id="player_9_pos_img" src="./images/top.png" /></div>
+					<div id="player_9_type" class="left-player-type"><img id="player_9_type_img" src="./images/cp.png" /></div>
 				</div>
 			</div>
 			<div id="heroes">
@@ -537,26 +599,36 @@ body {
 					<div id="player_2_name" class="right-player-name"></div>
 					<div id="player_2_number" class="right-player-number">2</div>
 					<div id="player_2_pick" class="right-player-pick"><img id="player_2_pick_img" src="./images/black.png" /></div>
+					<div id="player_2_pos" class="right-player-pos"><img id="player_2_pos_img" src="./images/mid.png" /></div>
+					<div id="player_2_type" class="right-player-type"><img id="player_2_type_img" src="./images/cp.png" /></div>
 				</div>
 				<div id="player_3" class="right-player">
 					<div id="player_3_name" class="right-player-name"></div>
 					<div id="player_3_number" class="right-player-number">3</div>
 					<div id="player_3_pick" class="right-player-pick"><img id="player_3_pick_img" src="./images/black.png" /></div>
+					<div id="player_3_pos" class="right-player-pos"><img id="player_3_pos_img" src="./images/captain.png" /></div>
+					<div id="player_3_type" class="right-player-type"><img id="player_3_type_img" src="./images/roam.png" /></div>
 				</div>
 				<div id="player_6" class="right-player">
 					<div id="player_6_name" class="right-player-name"></div>
 					<div id="player_6_number" class="right-player-number">6</div>
 					<div id="player_6_pick" class="right-player-pick"><img id="player_6_pick_img" src="./images/black.png" /></div>
+					<div id="player_6_pos" class="right-player-pos"><img id="player_6_pos_img" src="./images/bot.png" /></div>
+					<div id="player_6_type" class="right-player-type"><img id="player_6_type_img" src="./images/wp.png" /></div>
 				</div>
 				<div id="player_7" class="right-player">
 					<div id="player_7_name" class="right-player-name"></div>
 					<div id="player_7_number" class="right-player-number">7</div>
 					<div id="player_7_pick" class="right-player-pick"><img id="player_7_pick_img" src="./images/black.png" /></div>
+					<div id="player_7_pos" class="right-player-pos"><img id="player_7_pos_img" src="./images/jungler.png" /></div>
+					<div id="player_7_type" class="right-player-type"><img id="player_7_type_img" src="./images/wp.png" /></div>
 				</div>
 				<div id="player_10" class="right-player">
 					<div id="player_10_name" class="right-player-name"></div>
 					<div id="player_10_number" class="right-player-number">10</div>
 					<div id="player_10_pick" class="right-player-pick"><img id="player_10_pick_img" src="./images/black.png" /></div>
+					<div id="player_10_pos" class="right-player-pos"><img id="player_10_pos_img" src="./images/top.png" /></div>
+					<div id="player_10_type" class="right-player-type"><img id="player_10_type_img" src="./images/cp.png" /></div>
 				</div>
 			</div>
 		</div>
