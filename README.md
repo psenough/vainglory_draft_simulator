@@ -28,29 +28,32 @@ if you don't have http-sever you can install by calling `npm install http-server
 
 ## TODO
 
-* improve readability of hero winrate
+* display position and WP/CP on sides (click to alter, helps you see things more clearly)
+
+* grey out on the stats list heros already picked
+
+* hidable stats list section with a button
 
 * figure out way to edit/display counters, combos and comfort picks preferences
 
-* get app accurate hero thumbnails from a screenshot of a device (to be easier to reognize the heroes)
+* get app accurate hero thumbnails from a screenshot of a device (to be easier to recognize the heroes)
 
 * prettify look and feel (need designer help)
 
-* highlight who is the active person picking
+* display clock countdown as seen on real draft
 
-* clock countdown as seen on draft
-
-* display position and WP/CP on sides (click to alter, helps you see things more clearly)
-
-* split team views with central server to allow real drafting usage scenario
+* split team views with central server to allow real draft use for esports
 
 * toggle on/off auto picker (pick best meta heroes automatically)
 
 * toggle on/off winrate display helpers
 
+* hover on hero to show extra hero info (base stats, perks, suggested builds)
+
+* test on mobile
+
 Suggestions by shutterfly:
  * Remove the red/blue/strikethrough from the hero icons because it's redundant and tint them instead
- * Highlight the side that picks/bans with a lighter shade
  * Given the team's and the enemy team's roster, calculate the advantage gained/lost for all of the heroes left, tint suggested picks green and bad picks red.
  * Add hovers to the hero icons that have a tooltip. Inside the tooltip, provide the reason for the suggestion as a list with statistics. For example, with Marlene on Team A, Adagio on Team B, hovering Baron for B pick "Baron counters Adagio (positive), Baron synergizes with Adagio (positive)"
  * Remove the graphs on the bottom
@@ -74,6 +77,9 @@ Team B's chance of winning would be the inverse.
 For an open pick h in H the advantage / disadvantage of the pick for the team is chanceOfWinning(A, B) - chanceOfWinning(A + [h], B) for the A side or chanceOfWinning(A, B) - chanceOfWinning(A, B + [h]) on B side.
 scnr - this problem has kept me awake during many evenings and I never had the time / chance to write the code for it :(
  
+ You can use win rate * pick rate and if you have ban rates too win rate * (ban rate + pick rate)
+I called it "relevancy"
+
 ## Credits
 
-Coded by ps with some help by physiX and 4ever.
+Coded by ps with some feedback by physiX, 4ever, Tsumibit0, Smash and shutterfly.
