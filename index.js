@@ -201,17 +201,17 @@ function stepState() {
 					showBanRates();
 				break;
 				case 3: 
-					stages('ban_small_red.png', 'right-ban2-img', 'player 2 selecting 3rd ban');
-					document.getElementById('right-ban1-img').classList.add("active_position");
-					showBanRates();
-				break;
-				case 4: 
-					stages('ban_small_red.png', 'right-ban1-img', 'player 1 selecting 4th ban');
+					stages('ban_small_red.png', 'right-ban2-img', 'player 1 selecting 3rd ban');
 					document.getElementById('left-ban2-img').classList.add("active_position");
 					showBanRates();
 				break;
+				case 4: 
+					stages('ban_small_red.png', 'left-ban2-img', 'player 2 selecting 4th ban');
+					document.getElementById('right-ban1-img').classList.add("active_position");
+					showBanRates();
+				break;
 				case 5: 
-					stages('ban_small_blue.png', 'left-ban2-img', 'player 1 selecting hero');
+					stages('ban_small_blue.png', 'right-ban1-img', 'player 1 selecting hero');
 					document.getElementById('player_1_pick_img').classList.add("active_position");
 					showWinRates();
 				break;
