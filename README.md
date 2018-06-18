@@ -78,6 +78,11 @@ scnr - this problem has kept me awake during many evenings and I never had the t
  You can use win rate * pick rate and if you have ban rates too win rate * (ban rate + pick rate)
 I called it "relevancy"
 
+Ok so as far as quick fixes, consider making the background color of the red and blue elements a rgba css value with a low opacity. Like 0.25-0.5ish. You want to let the background black knock down the chroma of the blue and the red. Also consider using a less black... errr black for that background. That will help the blend of colors to look more rich
+
+it looks really cool! I’d suggest making a border around the pick icons so that they stand out more compare to the hero thumbnails
+Showing the list at the bottom looks fine as is right now, especially since the top few heroes to pick are indicated
+
 ## Credits
 
 Coded by ps with some feedback by physiX, 4ever, Tsumibit0, Smash and shutterfly.
