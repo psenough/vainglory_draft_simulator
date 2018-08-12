@@ -30,6 +30,8 @@ if you don't have http-sever you can install by calling `npm install http-server
 
 * grey out on the stats list heros already picked
 
+* names on top of hero images
+
 * hidable stats list section with a button
 
 * figure out way to edit/display counters, combos and comfort picks preferences
