@@ -15,7 +15,7 @@ if (process.argv.length > 2) {
 	process.argv.forEach(function (val, index, array) {
 	  //console.log(index + ': ' + val);
 	  if (index >= 2) {
-		list = getDetails(val);
+		list = getDetails(val, function(){ console.log(val + ' yata!'); });
 	  }
 	});
 } else {
