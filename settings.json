@@ -4,7 +4,7 @@
 "list_of_heroes_json": "./scrapped-data/vaingloryfire-list-of-heroes.json",
 "local_images_path": "./scrapped-data/",
 "heroes_url": "https://www.vainglorygame.com/heroes/",
-"latest_hero": "ylva",
+"latest_hero": "san feng",
 "vgpro_api_url": "https://api.vgpro.gg/heroes/all/",
 "merged_heroes_json": "./scrapped-data/merged-heroes.json"
 }

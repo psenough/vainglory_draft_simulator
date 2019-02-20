@@ -1,1 +1,1 @@
-{"attack_type":["Melee"],"position":[""],"role":["Assassin"],"hp":[" (+)"],"hp_regen":[" (+)"],"ep":[" (+)"],"ep_regen":[" (+)"],"wp_dmg":[" (+)"],"atk_speed":[" (+)"],"armor":[" (+)"],"shield":[" (+)"],"atk_range":["Move Speed"],"move_speed":[null]}
+{"attack_type":["Melee"],"position":[""],"role":["Assassin"],"hp":["750 (+141)"],"hp_regen":["4.67 (+0.41)"],"ep":["200 (+45)"],"ep_regen":["2.6 (+0.2)"],"wp_dmg":["82 (+6.36)"],"atk_speed":["100% (+3.3%)"],"armor":["30 (+5)"],"shield":["20 (+3.64)"],"atk_range":["1.6"],"move_speed":["3.6"]}
